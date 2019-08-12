@@ -1,0 +1,10 @@
+body,button,form,h1,h2,h3,h4,h5,h6,hr,input,li,ol,p,pre,td,th,ul,div{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  text-align: start;
+}
+body{width: 100%; background: #ffffed;}
+table{border-collapse:collapse;}
+a{text-decoration:none}
+ul{list-style:none}
