@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin: 0;padding: 0}
+    .icon1{
+        background:url(https://www.52bjy.com/skin/bjycss/image/reg-step.png) no-repeat -1px -22px;
+        padding:1px 6px;
+    }
+    .icon2{
+        background:url(https://www.52bjy.com/skin/bjycss/image/reg-step.png) no-repeat -1px -47px;
+        padding:1px 6px;
+    }
+    .reg-title{
+        display: block;
+        width:100%;
+        margin-top:60px;
+    }
+    .reg-title ul{
+        list-style: none;
+        width:800px;
+        display: flex;
+        margin: 0 auto;
+        border-bottom:2px solid #ccc;
+    }
+    .reg-title ul li{
+        margin: 0  auto;
+        font-weight: bold;
+        padding:0 50px;
+    }
+    .reg-title ul li:first-child{
+        border-bottom: 2px solid #FF6375;
+    }
+    .reg-title ul li span,.reg-title ul li b{
+        width:24px;
+        height: 24px;
+        line-height: 24px;
+        display: inline-block;  
+    }
+    .reg-main{
+        margin-top:150px;
+    }
+    .reg-table{
+        margin: 0 auto;
+    }
+    .reg-table tr{
+        height:60px;
+        border:1px solid #000;
+    }
+    .reg-table tr td span{
+        color:red;
+    }
+    .reg-table tr td:first-child{
+        padding-right:20px;
+    }
+    .reg-table tr:not(:first-child) td input{
+        height:42px;
+        width:296px;
+    }
+    .reg-table tr:first-child td input{
+        margin-left:20px;
+    }
+    .reg-btn{
+        display: block;
+        width:300px;
+        height:42px;
+        background:#ff6375;
+        line-height: 42px;
+        font-size: 16px;
+        color:#fff;
+        border-radius: 5px;
+        border:none;
+        margin-top:30px;
+    }
+    </style>
+</head>
+<body>
+    <div class="reg-title">
+        <ul>
+            <li><span class="icon1">1</span>注册验证</li>
+            <li><b class="icon2">&nbsp&nbsp</b>注册成功</li>
+        </ul>
+    </div>
+    <div class="reg-main">
+        <table class="reg-table">
+            <tr>
+                <td><span>*</span>会员类型</td>
+                <td>
+                    <input type="radio" name="post[regid]" value="6" id="Comp" onclick="Dreg(1);" checked=""><label for="Comp">企业</label>
+                    <input type="radio" name="post[regid]" value="5" id="Pers" onclick="Dreg(0);" checked=""><label for="Pers">个人</label>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td><span>*</span>公司名称</td>
+                <td><input type="text"></td>     
+            </tr>
+            <tr>
+                <td><span>*</span>会员名称</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><span>*</span>会员电话</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><span>*</span>登录密码</td>
+                <td><input type="password"></td>         
+            </tr>
+            <tr>
+                <td><span>*</span>重复输入</td>
+                <td><input type="password"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button class="reg-btn">立即注册</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
