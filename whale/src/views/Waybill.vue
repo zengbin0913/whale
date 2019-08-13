@@ -293,9 +293,6 @@
 export default {};
 </script>
 <style scoped>
-.font-small {
-  font-size: 1rem;
-}
 .container {
   width: 100%;
   padding-right: 15px;

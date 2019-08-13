@@ -31,3 +31,6 @@ server.use(bodyParser.urlencoded({extended:false}));
 const userRouter=require("./routes/user.js");
 server.use("/user",userRouter); //挂载路由
 
+//引入自定义首页模块
+const indexRouter=require("./routes/index.js");
+server.use("/index",indexRouter); //挂载路由

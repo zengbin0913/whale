@@ -72,10 +72,24 @@ INSERT INTO whale_order VALUES(NULL,1,1,"西藏",3,1565354439801,1570354439801,1
 /*1.4.9首页轮播广告商品*/
 CREATE TABLE whale_index_carousel(
   carousel_id INT PRIMARY KEY AUTO_INCREMENT,
-  img VARCHAR(128),
-  title VARCHAR(64)
+  left_img VARCHAR(128),
+	right_img VARCHAR(128),
+  title VARCHAR(64),
+	bgcolor VARCHAR(64)
 );
-INSERT INTO  whale_index_carousel VALUES(NULL, "banner1.jpg" , "首页轮播图1");
-INSERT INTO  whale_index_carousel VALUES(NULL, "banner2.jpg" , "首页轮播图2");
-INSERT INTO  whale_index_carousel VALUES(NULL, "banner3.jpg" , "首页轮播图3");
+INSERT INTO  whale_index_carousel VALUES(NULL, "banner_1_l.png", "banner_1_r.png", "首页轮播图1","#ff7f8b");
+INSERT INTO  whale_index_carousel VALUES(NULL, "banner_2_l.png", "banner_2_r.png", "首页轮播图2","#61c597");
+INSERT INTO  whale_index_carousel VALUES(NULL, "banner_3_l.png", "banner_3_r.png", "首页轮播图3","#727272");
 
+/*1.4.10导航条*/
+CREATE TABLE whale_nav(
+	nid INT PRIMARY KEY AUTO_INCREMENT,
+	article VARCHAR(64),  #首页,白鲸鱼APP,预约回收,鲸鱼公益,企业捐赠,登录/注册
+	nhref VARCHAR(128)  #跳转地址
+);
+INSERT INTO  whale_nav VALUES(NULL,"首页","/index");
+INSERT INTO  whale_nav VALUES(NULL,"白鲸鱼APP","/App");
+INSERT INTO  whale_nav VALUES(NULL,"预约回收","/waybill");
+INSERT INTO  whale_nav VALUES(NULL,"鲸鱼公益","/donate");
+INSERT INTO  whale_nav VALUES(NULL,"企业捐赠","/corporation");
+INSERT INTO  whale_nav VALUES(NULL,"登录/注册","/login");

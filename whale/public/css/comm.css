@@ -8,3 +8,4 @@ body{width: 100%; background: #ffffed;}
 table{border-collapse:collapse;}
 a{text-decoration:none}
 ul{list-style:none}
+.bg-color {background: #ff6375; opacity:0.8}
