@@ -342,24 +342,30 @@ export default {
   color: #ffffff;
   box-sizing: border-box;
 }
-.my_width {
-  width: 75rem;
+/*内容区域公共宽度1200px*/ 
+.my_width,.co2-h1,.co2-h1 h1,.bjyju-item {
+  width:75rem;
+}
+/*内容区域文字居中显示*/ 
+.my_width .plan,#intr .my_width h3,.co2,.co2-h1 h1,.bjyju-item,.bjyju-item-h4,.span-text span {
+  text-align: center;
+}
+.my_width,.bjyju-item {
   margin: 0 auto;
+}
+.my_width {
   display: flex;
 }
 /* 计划内容 */
 .my_width .plan {
   width: 37.5rem;
   height: 7.5rem;
-  text-align: center;
   border-left: 0.0625rem solid #ffffff;
   border-right: 0.0625rem solid #ffffff;
 }
-
 #intr .my_width h3 {
   font-size: 1.5rem;
   margin: 0.625rem 0;
-  text-align: center;
 }
 #intr .plan p {
   padding: 0 1.875rem;
@@ -367,72 +373,55 @@ export default {
 }
 /* <!-- 公益平台大区域平台数据展示--> */
 .co2 {
-  text-align: center;
   width:100%;
-  
 }
-
 .co2-h1 {
-    margin: 20px auto;
-    width:1200px;
-
+    margin:1.25rem auto;
 }
 .co2-h1 h1{
-  width:1200px;
   font-size:2rem;
-  height: 34px;
-  text-align: center;
+  height: 2.125rem;
   color:#f17c81;
- 
 }
 .co2-h1 p {
     font-size: 1rem;
-    color: #666;
-    height:21px;
+    color: #666666;
+    height:1.3125rem;
     margin-top:0.8rem;
 }
-
 .bjyju-item{
-  width:1200px;
-  margin:0 auto;
-  text-align:center;
   display:flex;
 } 
 .bjyju-item span{
-   width:400px;
-   height:40px;
+   width:25rem;
+   height:2.5rem;
 }
 .bjyju-item-h4{
-    width:400px;
-    text-align:center;
-    font-size: 22px;
+    width:25rem;
+    font-size: 1.375rem;
     color: #fe7e90;
-    margin-bottom: 10px;
-
+    margin-bottom: 0.625rem;
 }
 .span-text{
-    width:400px;
+    width:25rem;
     text-align: center;  /*边框居中显示*/
-
-    
 }
 .span-text span{
-  font-size: 30px;
+   font-size: 1.875rem;
     color: #fe7e90;
     /* margin: 0 18px;文字距离椭圆外边距 */
-    border: 2px solid #fe7e90;
-    border-radius: 50px;
-    padding: 2px 0;
-    margin-top: 10px;
-    width: 248px; 
-    text-align: center;
+    border: 0.125rem solid #fe7e90;
+    border-radius: 3.125rem;
+    padding: 0.125rem 0;
+    margin-top: 0.625rem;
+    width: 15.5rem; 
     display: inline-block;
-    
 }  
 /* <!-- 底部切换现状背景和解决方案--> */
-.statu,
-.d3 {
+.statu,.d3 {
   width: 75rem;
+}
+.statu,.d3,.tab-nav-icon,.tab-box_div,.news-box,.news-more {
   margin: 0 auto;
 }
 .statu .tab-nav-title {
@@ -457,12 +446,10 @@ export default {
   height: 0.5rem;
   border: 0.5rem solid transparent;
   border-bottom: 0.9375rem solid #ff6375;
-  margin: 0 auto;
 }
 .tab-box_div {
   width: 75rem;
   height: 17.4375rem;
-  margin: 0 auto;
   margin-top: 1.25rem;
   margin-bottom: 2rem;
 }
@@ -534,7 +521,6 @@ export default {
 /* 内容区域文字和图片 */
 .news-box {
   width: 75rem;
-  margin: 0 auto;
 }
 /* news标题 */
 .news-title {
@@ -596,7 +582,6 @@ export default {
   background: #f07c89;
   border-radius: 3.125rem;
   font-size: 1.25rem;
-  margin: 0 auto;
 }
 /** 悬停时背景颜色(有变化不是很明显)**/ 
 .news-more:hover {
@@ -609,25 +594,25 @@ export default {
 /* <!--国内地图----白鲸鱼的身影  --> */
 .Chinamap {
   width: 100%;
-  height: 750px;
+  height: 46.875rem;
   overflow: hidden;
 }
 .map_title {
-  width:1200px;
-  margin: 0 auto;
+  width:75rem;
   text-align:center;
+  margin:0 auto;
   font-weight: 100;
-  padding:40px 0 0;
+  padding:2.5rem 0 0;
 }
 .map_title_h1{
-  width:1200px;
+  width:75rem;
   text-align: center;
   font-weight: 100;
-  font-size:24px;
+  font-size:1.5rem;
 }
 .map_title p{
-  font-size:14px;
-  width:1200px;
+  font-size:0.875rem;
+  width:75rem;
   text-align:center;
   margin-top: 0.5rem;
 }
