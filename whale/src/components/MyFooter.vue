@@ -66,7 +66,7 @@ export default {};
   width: 100%;
   background: #000;
   padding: 20px 0 10px;
-  margin-top:3rem;
+  /* margin-top:3rem;*/
 }
 /* 内层div footer */
 .footer {
@@ -87,6 +87,9 @@ export default {};
 .footer,
 .foot2 {
   display: flex;
+}
+.foot a{
+  text-decoration:none;
 }
 /* 联系我们 */
 .footer .foot1 {

@@ -20,6 +20,7 @@ server.use(session({
 }));
 //6创建监听
 server.listen(3000);
+console.log("服务器启动成功");
 //7配置静态目录
 server.use(express.static("public"));
 
