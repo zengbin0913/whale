@@ -28,10 +28,14 @@ server.use(express.static("public"));
 const bodyParser = require('body-parser');
 server.use(bodyParser.urlencoded({extended:false}));
 
-//引入自定义首页模块
+//引入自定义用户模块
 const userRouter=require("./routes/user.js");
 server.use("/user",userRouter); //挂载路由
 
 //引入自定义首页模块
 const indexRouter=require("./routes/index.js");
 server.use("/index",indexRouter); //挂载路由
+
+//引入自定义首页模块
+const companyRouter=require("./routes/company.js");
+server.use("/company",companyRouter); //挂载路由

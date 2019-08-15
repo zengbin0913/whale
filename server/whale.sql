@@ -93,3 +93,15 @@ INSERT INTO  whale_nav VALUES(NULL,"预约回收","/waybill");
 INSERT INTO  whale_nav VALUES(NULL,"鲸鱼公益","/donate");
 INSERT INTO  whale_nav VALUES(NULL,"企业捐赠","/corporation");
 INSERT INTO  whale_nav VALUES(NULL,"登录/注册","/login");
+
+/*1.4.11企业捐赠轮播广告商品*/
+CREATE TABLE whale_company_carousel(
+  carousel_id INT PRIMARY KEY AUTO_INCREMENT,
+  left_img VARCHAR(128),
+  right_img VARCHAR(128),
+  title VARCHAR(64),
+  bgcolor VARCHAR(64)
+);
+INSERT INTO  whale_company_carousel VALUES(NULL, "combanner_1_l.png", "combanner_1_r.png", "企业捐赠轮播图1","#424242");
+INSERT INTO  whale_company_carousel VALUES(NULL, "combanner_2_l.png", "combanner_2_r.png", "企业捐赠轮播图2","#424242");
+INSERT INTO  whale_company_carousel VALUES(NULL, "combanner_3_l.png", "combanner_3_r.png", "企业捐赠轮播图3","#424242");

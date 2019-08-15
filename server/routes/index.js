@@ -10,6 +10,7 @@ index.get("/nav",(req,res)=>{
 		res.send(result);
 	})
 });
+/*首页轮播图*/
 index.get("/carousel",(req,res)=>{
 	var sql=`SELECT carousel_id,left_img,right_img,title,bgcolor FROM whale_index_carousel`;
 	pool.query(sql,(err,result)=>{
