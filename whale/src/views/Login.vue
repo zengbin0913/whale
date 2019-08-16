@@ -6,16 +6,16 @@
       <div class="loginbjy">
         <h2>账号登录</h2>
         <div class="d1">
-          <input type="text" class="input-uname" placeholder="请输入用户名/Email/手机号码" />
+          <input type="text" class="input-uname" placeholder="请输入用户名/Email/手机号码" v-model="uname">
         </div>
         <div class="d1">
-          <input type="password" class="input-password" placeholder="请输入密码" />
+          <input type="password" class="input-password" placeholder="请输入密码" v-model="upwd">
         </div>
         <div class="d1">
-          <button>登录</button>
+          <button @click="login">登录</button>
         </div>
         <div style="margin:0px 10px">
-          <a href>会员注册</a>
+          <router-link to="/reg">会员注册</router-link>
           <span>|</span>
           <a href>忘记密码</a>
         </div>
@@ -24,7 +24,32 @@
   </div>
 </template>
 <script>
-export default {};
+import qs from "qs";
+export default {
+  data(){
+    return{
+      uname:"",
+      upwd:""
+    }
+  },
+  methods:{
+    login(){
+    var uname=this.uname;
+    var upwd=this.upwd;
+    this.axios.post("/user/login",qs.stringify({
+      uname:uname,
+      upwd:upwd
+    }),{
+      emulateJSON: true
+    },{
+      headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
+    }).then(result=>{
+      if(result.data.code==200) this.$router.push("/index");
+      else alert(`${result.data.msg}`)
+    })
+  }
+  }
+};
 </script>
 <style scoped>
 .bg{

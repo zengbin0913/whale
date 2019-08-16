@@ -9,16 +9,13 @@ CREATE TABLE whale_user(
   uname VARCHAR(16),
   upwd VARCHAR(32),           #6-12位数字大小写字母组合,必须包含一个大写字母和数字
   phone VARCHAR(11),
-  email VARCHAR(32),
-  userName VARCHAR(16),       #真实姓名
-  avatar  VARCHAR(128),       #头像图片路径
-  gender  TINYINT             #性别  0-女  1-男
+  email VARCHAR(32)
 );
 
-INSERT INTO whale_user VALUES(NULL,"tom","1B3456","13135362978","tom@126.com","张三","1.jpg",1); 
-INSERT INTO whale_user VALUES(NULL,"jerry","1B3456","15115756664","jerry@qq.com","李四","2.jpg",0);
-INSERT INTO whale_user VALUES(NULL,"lily","1B3456","15886626453","lily@sohu.com","王五","3.jpg",1);
-INSERT INTO whale_user VALUES(NULL,"Bob","1B3456","15815533564","Bob@126.com","赵六","4.jpg",0); 
+INSERT INTO whale_user VALUES(NULL,"tom","1B3456","13135362978","tom@126.com"); 
+INSERT INTO whale_user VALUES(NULL,"jerry","1B3456","15115756664","jerry@qq.com");
+INSERT INTO whale_user VALUES(NULL,"lily","1B3456","15886626453","lily@sohu.com");
+INSERT INTO whale_user VALUES(NULL,"Bob","1B3456","15815533564","Bob@126.com"); 
 
 /*1.4.2用户信息表(企业)*/
   CREATE TABLE whale_company_user(
