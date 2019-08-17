@@ -144,6 +144,16 @@
       <div class="map_title">
         <h1 class="map_title_h1">无处不在的身影</h1>
         <p>国内大部分地区都有白鲸鱼的身影</p>
+        <div class="show_map">
+          <div>
+            <span class="kt_city"></span>
+             <span>开通城市</span>
+          </div>
+          <div>
+            <span class="help_city"></span>
+            <span>帮助城市</span>
+          </div>
+        </div>
       </div>
       <div class="map_ser">
         <div class="a1">
@@ -615,6 +625,23 @@ export default {
   width:75rem;
   text-align:center;
   margin-top: 0.5rem;
+}
+.show_map{
+  display:flex;
+  width:75rem;
+  margin:0 auto;
+}
+.kt_city{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:red;
+}
+.help_city{
+  background:blue;
+  width:10px;
+  height:10px;
+  border-radius:50%;
 }
 .map_ser {
   width: 46.875rem;

@@ -102,19 +102,13 @@
             </li>
           </ul>
         </div>
-        <div class="btns"><button class="reg-btn" @click="register">立即注册</button></div>
-      </div>
-      <div class="reg-success hide">
-          <div class="reg-notice">恭喜您！会员注册成功</div>
-          <div class="reg-msg" id="dec"></div>
-          <button class="reg-login" @click="ends">立即登录</button>
+        <div class="btns"><button class="reg-btn">立即注册</button></div>
       </div>
     </div>
     <my-footer></my-footer>
   </div>
 </template>
 <script>
-import qs from "qs";
 export default {
   data(){
     return{ /*个人*/
@@ -127,10 +121,7 @@ export default {
       cupwd:"",/*企业*/
       rcupwd:"",
       cuname:"",
-      company_name:"",
-      num:0,   //注册选项填的数目
-      status:0, /*企业个人之间切换0-个人默认 1-企业*/
-      timer:"", //定时器
+      company_name:""
     }
   },
   methods:{
@@ -139,11 +130,9 @@ export default {
       if(tabid=="comp-tab"){
           comp.style.display="block";
           pers.style.display="none";
-          this.status=1;
       } else{
         comp.style.display="none";
         pers.style.display="block";
-        this.status=0;
       } 
     },
     msg_vail(e){ /*文本框聚焦*/
@@ -158,7 +147,7 @@ export default {
       if(e.target.id=="em") /*电子邮箱*/  
         e.target.nextElementSibling.innerHTML="合法的电子邮箱"; 
       if(e.target.id=="company") /*电子邮箱*/  
-        e.target.nextElementSibling.innerHTML="公司全称，注册后不可更改,且为中文";   
+        e.target.nextElementSibling.innerHTML="公司全称，注册后不可更改";   
     },
     msg2_vail(e){ /*文本框失去焦点*/
       e.target.nextElementSibling.style.display="block";
@@ -178,7 +167,6 @@ export default {
             else{
               e.target.nextElementSibling.innerHTML="用户名可用";
               e.target.nextElementSibling.style.backgroundColor="#0d0";
-              this.num++;
             }
           })
         }
@@ -202,7 +190,6 @@ export default {
             e.target.nextElementSibling.innerHTML="密码强度强";
             e.target.nextElementSibling.style.backgroundColor="#0d0";
           }
-          this.num++;
         }
       }
       if(e.target.id=="rp"){/*确认密码*/
@@ -217,7 +204,6 @@ export default {
           if(upwd==rupwd){
             e.target.nextElementSibling.innerHTML="密码正确";
             e.target.nextElementSibling.style.backgroundColor="#0d0";
-            this.num++;
           }else{
             e.target.nextElementSibling.innerHTML="两次输入的密码不一致";
             e.target.nextElementSibling.style.backgroundColor="#f00";
@@ -234,7 +220,6 @@ export default {
         else {
           e.target.nextElementSibling.innerHTML="手机号码可用";
           e.target.nextElementSibling.style.backgroundColor="#0d0";
-          this.num++;
         }
       }
        if(e.target.id=="em"){/*电子邮箱*/
@@ -247,7 +232,6 @@ export default {
         else {
           e.target.nextElementSibling.innerHTML="邮箱可用";
           e.target.nextElementSibling.style.backgroundColor="#0d0";
-          this.num++;
         }
       }
       if(e.target.id=="vali"){ /*验证码判断*/
@@ -267,7 +251,6 @@ export default {
         else{
           msg.innerHTML="验证码正确";
           msg.style.backgroundColor="#0d0";
-          this.num++;
         }
       }
       if(e.target.id=="cp"){/*企业密码*/
@@ -289,7 +272,6 @@ export default {
             e.target.nextElementSibling.innerHTML="密码强度强";
             e.target.nextElementSibling.style.backgroundColor="#0d0";
           }
-          this.num++;
         }
       }
       if(e.target.id=="rcp"){/*确认密码*/
@@ -304,7 +286,6 @@ export default {
           if(cupwd==rcupwd){
             e.target.nextElementSibling.innerHTML="密码正确";
             e.target.nextElementSibling.style.backgroundColor="#0d0";
-            this.num++;
           }else{
             e.target.nextElementSibling.innerHTML="两次输入的密码不一致";
             e.target.nextElementSibling.style.backgroundColor="#f00";
@@ -327,7 +308,6 @@ export default {
             else{
               e.target.nextElementSibling.innerHTML="用户名可用";
               e.target.nextElementSibling.style.backgroundColor="#0d0";
-              this.num++;
             }
           })
         }
@@ -339,14 +319,13 @@ export default {
           e.target.nextElementSibling.innerHTML="公司名称不能为空";
           e.target.nextElementSibling.style.backgroundColor="#f00";
         }
-        else if(reg.test(company_name)==false){
+        else if(reg.test(cuname)==false){
           e.target.nextElementSibling.innerHTML="公司名称格式错误";
           e.target.nextElementSibling.style.backgroundColor="#f00";
         }
         else{
           e.target.nextElementSibling.innerHTML="公司名称可用";
           e.target.nextElementSibling.style.backgroundColor="#0d0";
-          this.num++;
         }
       }
     },
@@ -361,75 +340,7 @@ export default {
         code+=codeChars[index];//组合成指定字符验证码
       }
         valicode.innerHTML = code;//将生成验证码赋值到显示区
-    },
-    register(e){ //注册按钮  
-      if(this.num==6 && this.status==0){ //个人
-        var uname=this.uname;
-        var upwd=this.upwd;
-        var email=this.email;
-        var phone=this.phone;
-        this.axios.post("/user/reg",qs.stringify({
-          uname:uname,
-          upwd:upwd,
-          phone:phone,
-          email:email
-        }),{emulateJSON: true},{
-           headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
-        }).then(result=>{
-          if(result.data.code==-1) alert(`${result.data.msg}`);
-          else{
-            var reg_main=e.target.parentElement.parentElement;
-            var reg_success=e.target.parentElement.parentElement.nextElementSibling;
-            reg_main.style.display="none";
-            reg_success.style.display="block";
-            var n=10; //倒计时
-            this.timer=setInterval(()=>{	
-              dec.innerHTML=`${n}秒后自动登录系统...`;
-              n--;
-              if(n==0){
-                this.$router.push("/login");
-                clearInterval(this.timer);
-              }
-            },1000);
-          }
-        })
-      }
-      if(this.num==4 && this.status==1){ //企业
-        var cuname=this.cuname;
-        var cupwd=this.cupwd;
-        var company_name=this.company_name;
-        this.axios.post("/user/companyreg",qs.stringify({
-          cuname:cuname,
-          company_name:company_name,
-          upwd:cupwd
-        }),{emulateJSON: true},{
-           headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
-        }).then(result=>{
-          if(result.data.code==-1) alert(`${result.data.msg}`);
-          else{
-            var reg_main=e.target.parentElement.parentElement;
-            var reg_success=e.target.parentElement.parentElement.nextElementSibling;
-            reg_main.style.display="none";
-            reg_success.style.display="block";
-            var n=10; //倒计时
-            this.timer=setInterval(()=>{	
-              dec.innerHTML=`${n}秒后自动登录系统...`;
-              n--;
-              if(n==0){
-                this.$router.push("/login");
-                clearInterval(this.timer);
-              }
-            },1000);
-          }
-        })
-      }
-    },
-    ends(){ //手动干预进入登录页面
-      clearInterval(this.timer);
-      this.$router.push("/login");
-    },
-  },
-  computed: {
+    }
   },
   mounted(){
     this.createCode(4);
@@ -481,6 +392,7 @@ export default {
 .reg-content .types input {
   margin-left: 1rem;
 }
+
 .reg-details li {
   width: 100%;
   height: 3rem;
@@ -494,10 +406,11 @@ export default {
 }
 .reg-details li input {
   width: 18rem;
-  outline: none;
+  outline: 0;
   border-radius: 0.25rem;
   padding-left: 0.25rem;
   font-size: 0.875rem;
+  border:2px solid #ccc;
 }
 .reg-details li .msg {
   display: none;
@@ -540,53 +453,17 @@ export default {
   width: 18rem;
   height: 2.5rem;
   margin-top:3rem;
-  margin-bottom:6rem;
+  margin-bottom:3rem;
   margin-left:6rem;
   background: #ff6375;
-  font-size: 1rem;
+  font-size: 16px;
   color: #fff;
-  border-radius: 0.25rem;
+  border-radius: 5px;
   text-align: center;
   outline: 0;
   border: 0;
-}
-.reg-btn:hover{
-  background: #0569D5;
 }
 .hide{
   display:none;
 }
-.reg-success{
-  width: 20rem;
-  margin:6rem auto;
-  text-align: center;
-  padding:1rem 0;
-}
-.reg-notice{
-  width: 100%;
-  color:#4fa800;
-  text-align: center;
-  margin-bottom:3rem;
-}
-.reg-msg{
-  font-size:0.875rem;
-  text-align: center;
-  margin-bottom:2rem;
-  color:#f00;
-}
-.reg-login{
-  display: block;
-  width: 16rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
-  background: #4fa800;
-  font-size: 1rem;
-  color: #fff;
-  border-radius: 0.25rem;
-  text-align: center;
-  outline: 0;
-  border: 0;
-  margin:0 auto;
-}
-.reg-login:hover{text-decoration: none;}
 </style>
