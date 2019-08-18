@@ -1,9 +1,13 @@
+# 客户端连接服务器端使用的编码
 SET NAMES UTF8;
+#如果存在丢弃数据库whale
 DROP DATABASE IF EXISTS whale;
+#创建数据库whale
 CREATE DATABASE whale CHARSET=UTF8;
+#使用进入数据库whale
 USE whale;
 
-/*1.4.1用户信息表(个人)*/
+/*1.1用户信息表(个人)*/
 CREATE TABLE whale_user(
   uid INT PRIMARY KEY AUTO_INCREMENT,
   uname VARCHAR(16),
@@ -17,7 +21,7 @@ INSERT INTO whale_user VALUES(NULL,"jerry","1B3456","15115756664","jerry@qq.com"
 INSERT INTO whale_user VALUES(NULL,"lily","1B3456","15886626453","lily@sohu.com");
 INSERT INTO whale_user VALUES(NULL,"Bob","1B3456","15815533564","Bob@126.com"); 
 
-/*1.4.2用户信息表(企业)*/
+/*1.2用户信息表(企业)*/
   CREATE TABLE whale_company_user(
   cuid INT PRIMARY KEY AUTO_INCREMENT,
   cuname VARCHAR(16),  
@@ -28,7 +32,7 @@ INSERT INTO whale_company_user VALUES(NULL,"Laird","莱尔德(深圳)电子材�
 INSERT INTO whale_company_user VALUES(NULL,"Amphone","安费诺科技深圳有限公司","2C3456");
 
 
-/*1.4.3捐赠在线预约信息*/  
+/*1.3捐赠在线预约信息*/  
 CREATE TABLE whale_appointments(
   aid INT PRIMARY KEY AUTO_INCREMENT,
   uid INT,                    #用户编号  关联用户信息表 
@@ -44,7 +48,7 @@ CREATE TABLE whale_appointments(
 );
 INSERT INTO whale_appointments VALUES(NULL,1,"张三","广东省","深圳市","龙华区","明治街道嘉熙业广场11楼","13135362978",1,1,1565350839801);
 
-/*1.4.4捐赠商品信息表*/
+/*1.4捐赠商品信息表*/
 CREATE TABLE whale_family(  
   fid INT PRIMARY KEY AUTO_INCREMENT,
   fname VARCHAR(32),          #商品名称
@@ -52,7 +56,7 @@ CREATE TABLE whale_family(
 );
 INSERT INTO whale_family VALUES(NULL,"冬衣棉袄",1);
 
-/*1.4.5用户公益订单表*/
+/*1.5用户公益订单表*/
 CREATE TABLE whale_order(
   oid INT PRIMARY KEY AUTO_INCREMENT,
   uid INT,		      #用户编号 关联用户信息表 
@@ -66,7 +70,7 @@ CREATE TABLE whale_order(
 INSERT INTO whale_order VALUES(NULL,1,1,"西藏",3,1565354439801,1570354439801,1570354639801);
 
 
-/*1.4.6首页轮播广告商品*/
+/*1.6首页轮播广告商品*/
 CREATE TABLE whale_index_carousel(
   carousel_id INT PRIMARY KEY AUTO_INCREMENT,
   left_img VARCHAR(128),
@@ -78,7 +82,7 @@ INSERT INTO  whale_index_carousel VALUES(NULL, "banner_1_l.png", "banner_1_r.png
 INSERT INTO  whale_index_carousel VALUES(NULL, "banner_2_l.png", "banner_2_r.png", "首页轮播图2","#61c597");
 INSERT INTO  whale_index_carousel VALUES(NULL, "banner_3_l.png", "banner_3_r.png", "首页轮播图3","#727272");
 
-/*1.4.7导航条*/
+/*1.7导航条*/
 CREATE TABLE whale_nav(
   nid INT PRIMARY KEY AUTO_INCREMENT,
   article VARCHAR(64),     #首页,白鲸鱼APP,预约回收,鲸鱼公益,企业捐赠,登录/注册
@@ -91,7 +95,7 @@ INSERT INTO  whale_nav VALUES(NULL,"鲸鱼公益","/donate");
 INSERT INTO  whale_nav VALUES(NULL,"企业捐赠","/corporation");
 INSERT INTO  whale_nav VALUES(NULL,"登录/注册","/login");
 
-/*1.4.11企业捐赠轮播广告商品*/
+/*1.8企业捐赠轮播广告商品*/
 CREATE TABLE whale_company_carousel(
   carousel_id INT PRIMARY KEY AUTO_INCREMENT,
   left_img VARCHAR(128),
