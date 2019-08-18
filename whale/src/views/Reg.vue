@@ -19,6 +19,7 @@
               <span class="star">*</span> 会员类型
             </b>
             <label>
+            <!--切换获得企业或个人id值显示不同的注册页面内容-->
               <input id="comp-tab" type="radio" name="tab" value="comp" @click="tab">企业
             </label>
             <label>
@@ -130,7 +131,7 @@ export default {
       if(tabid=="comp-tab"){
           comp.style.display="block";
           pers.style.display="none";
-      } else{
+      }else{
         comp.style.display="none";
         pers.style.display="block";
       } 
@@ -138,7 +139,7 @@ export default {
     msg_vail(e){ /*文本框聚焦*/
       e.target.nextElementSibling.style.display="block";e.target.nextElementSibling.style.backgroundColor="#000";
       if(e.target.id=="u" ||e.target.id=="cu")/*用户名*/
-        e.target.nextElementSibling.innerHTML="会员名称,3-12位字母数组的组合";
+        e.target.nextElementSibling.innerHTML="会员名称,3-12位字母或数字的组合";
         /*密码*/
       if(e.target.id=="p" || e.target.id=="cp" || e.target.id=="rp" || e.target.id=="rcp") 
         e.target.nextElementSibling.innerHTML="6-12字母数字下划线组合,包含大写字母和数字";
@@ -147,7 +148,7 @@ export default {
       if(e.target.id=="em") /*电子邮箱*/  
         e.target.nextElementSibling.innerHTML="合法的电子邮箱"; 
       if(e.target.id=="company") /*电子邮箱*/  
-        e.target.nextElementSibling.innerHTML="公司全称，注册后不可更改";   
+        e.target.nextElementSibling.innerHTML="公司中文全称，注册后不可更改";   
     },
     msg2_vail(e){ /*文本框失去焦点*/
       e.target.nextElementSibling.style.display="block";
@@ -179,6 +180,7 @@ export default {
           e.target.nextElementSibling.style.backgroundColor="#f00";
         }
         else {
+          //密码的强度根据获取输入的长度而改变 
           if(upwd.length>=6 &&upwd.length<=8){
             e.target.nextElementSibling.innerHTML="密码强度弱";
             e.target.nextElementSibling.style.backgroundColor="#f0f";
@@ -315,11 +317,12 @@ export default {
       if(e.target.id=="company"){ /*公司名称*/
         var company_name=this.company_name; 
         var reg=/^[\u4e00-\u9fa5]+$/
+        // 至少一个中文？？ + 至少一个 多了不限
         if(!company_name){
           e.target.nextElementSibling.innerHTML="公司名称不能为空";
           e.target.nextElementSibling.style.backgroundColor="#f00";
         }
-        else if(reg.test(cuname)==false){
+        else if(reg.test(company_name)==false){
           e.target.nextElementSibling.innerHTML="公司名称格式错误";
           e.target.nextElementSibling.style.backgroundColor="#f00";
         }
