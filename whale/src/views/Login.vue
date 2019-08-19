@@ -1,12 +1,13 @@
 <template>
   <div class="bg">
-    <my-header></my-header>
+    <my-header class="header"></my-header>
     <div class="login">
       <div class="login-title">衣路有你，白鲸鱼在行动</div>
+      <div class="hide" id="msg"></div>
       <div class="loginbjy">
         <h2>账号登录</h2>
         <div class="d1">
-          <input type="text" class="input-uname" placeholder="请输入用户名/Email/手机号码" v-model="uname">
+          <input type="text" class="input-uname" placeholder="请输入用户名/Email" v-model="uname">
         </div>
         <div class="d1">
           <input type="password" class="input-password" placeholder="请输入密码" v-model="upwd">
@@ -17,7 +18,7 @@
         <div style="margin:0px 10px">
           <router-link to="/reg">会员注册</router-link>
           <span>|</span>
-          <a href>忘记密码</a>
+          <a href="javascript:;">记住密码</a>
         </div>
       </div>
     </div>
@@ -44,8 +45,13 @@ export default {
     },{
       headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
     }).then(result=>{
-      if(result.data.code==200) this.$router.push("/index");
-      else alert(`${result.data.msg}`)
+      if(result.data.code==200) {
+        this.$router.push("/waybill");
+      }
+      else {
+        msg.style.display="block";
+        msg.innerHTML=result.data.msg;
+      }
     })
   }
   }
@@ -74,6 +80,18 @@ export default {
   margin-left:-15rem;
   color:#fff;
   font-size: 2.75rem;
+}
+#msg{ /*错误提示*/
+  width: 30rem;
+  height: 1rem;
+  line-height: 1rem;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  margin-left:-15rem;
+  color:#f00;
+  font-size: 1rem;
+  text-align: center;
 }
 .loginbjy {
   width: 21.375rem;

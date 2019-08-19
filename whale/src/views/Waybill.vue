@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <my-header></my-header>
+  <div class="main">
+    <my-header class="bg-color header"></my-header>
     <div class="container">
       <!-- 顶部用户须知 -->
       <div class="order">
         <h2 class="order-title">用户须知</h2>
-        <ul class="order-nav">
-          <li id="order-tab1">回收说明</li>
+        <ul class="order-nav" @click="handle">
+          <li id="order-tab1" class="active">回收说明</li>
           <li id="order-tab2">包装说明</li>
           <li id="order-tab3">其它说明</li>
         </ul>
         <div class="order-box">
-          <!-- 切换图文区域 回收说明 -->
-          <div class="order-content1">
-            <!-- 左侧文字区域 默认第一个-->
+          <div class="order-content1" id="tab1">
             <div class="txt">
               <h3 class="content-title">回收说明</h3>
               <div class="content-txt">
@@ -47,8 +45,7 @@
               </li>
             </ul>
           </div>
-          <!-- part2 包装说明 -->
-          <div class="order-content2 hide">
+          <div class="order-content2 hide" id="tab2">
             <div class="txt">
               <h3 class="content-title">包装说明</h3>
               <div class="content-txt">
@@ -80,8 +77,7 @@
               </li>
             </ul>
           </div>
-          <!-- part3  其他说明 -->
-          <div class="order-content3 hide">
+          <div class="order-content3 hide" id="tab3">
             <div class="txt">
               <h3 class="content-title">其它说明</h3>
               <div class="content-txt">
@@ -118,29 +114,17 @@
       <!--在线预约 input部分  -->
       <div class="order2" id="order2">
         <h2 class="order-title">在线预约</h2>
+        <div class="alert" id="ordermsg"></div>
         <ul class="info">
-          <li>
-            <p>
-              预约姓名
-              <span>*</span>
-            </p>
-            <input type="text" id="uname" />
+          <li><p>预约姓名<span>*</span></p>
+            <input type="text" id="uname" v-model="uname">
           </li>
-          <li>
-            <p>
-              手机号码
-              <span>*</span>
-            </p>
-            <input type="text" id="phone" />
+          <li><p>手机号码<span>*</span></p>
+            <input type="text" id="phone" v-model="uphone">
           </li>
-          <li class="place">
-            <p>
-              所属地区
-              <span>*</span>
-            </p>
+          <li class="place"><p>所属地区<span>*</span></p>
             <div>
-              <select id="province">
-                <!--省-->
+              <select id="province" @change="selpro" v-model="uprovince"><!--省-->
                 <option value="0">请选择</option>
                 <option value="1">北京市</option>
                 <option value="2">天津市</option>
@@ -168,46 +152,18 @@
                 <option value="24">海南省</option>
                 <option value="25">吉林省</option>
               </select>
-              <select id="city">
-                <!--市-->
-                <option value="0">请选择</option>
-                <option value="1">北京市</option>
+              <select id="city" @change="selcity" v-model="ucity"><!--市-->
               </select>
-              <select id="region">
-                <!--区-->
-                <option value="0">请选择</option>
-                <option value="1">东城区</option>
-                <option value="2">西城区</option>
-                <option value="3">朝阳区</option>
-                <option value="4">丰台区</option>
-                <option value="5">海淀区</option>
-                <option value="6">房山区</option>
-                <option value="7">通州区</option>
-                <option value="8">顺义区</option>
-                <option value="9">昌平区</option>
-                <option value="10">大兴区</option>
-                <option value="11">怀柔区</option>
-                <option value="12">密云区</option>
-                <option value="13">延庆区</option>
-                <option value="14">平谷区</option>
-                <option value="15">石景山区</option>
-                <option value="16">门头沟区</option>
+              <select id="region" v-model="uregion"><!--区--> 
               </select>
             </div>
           </li>
           <li>
-            <p>
-              详细地址
-              <span>*</span>
-            </p>
-            <input type="text" />
+            <p>详细地址<span>*</span></p>
+            <input type="text" v-model="uaddress">
           </li>
-          <li>
-            <p>
-              大约重量
-              <span>*</span>
-            </p>
-            <select id="kg">
+          <li><p>大约重量<span>*</span></p>
+            <select id="kg" v-model="ukg">
               <option value="0">请选择</option>
               <option value="1">5-10kg</option>
               <option value="2">10-20kg</option>
@@ -215,15 +171,11 @@
               <option value="4">30kg以上</option>
             </select>
           </li>
-          <li>
-            <p>
-              上门日期
-              <span>*</span>
-            </p>
-            <input type="date" />
+          <li><p>上门日期<span>*</span></p>
+            <input type="date" v-model="udate">
           </li>
         </ul>
-        <button class="btn">提交</button>
+        <button class="btn" @click="submit">提交</button>
       </div>
       <!-- 流程示意图 -->
       <div class="pro">
@@ -300,34 +252,181 @@
   </div>
 </template>
 <script>
-export default {};
+import qs from "qs";
+export default {
+  data(){
+    return{
+      uname:"",
+      uphone:"",
+      uregion:"",
+      uprovince:"",
+      ucity:"",
+      uaddress:"",
+      ukg:"",
+      udate:""
+    }
+  },
+  methods:{
+    handle(e) {
+      var divs=document.querySelectorAll(".order-box>div");
+      var lis=document.querySelectorAll(".order-nav>li");
+      var targetid=e.target.id.substr(-4,4);
+      for(var div of divs){ //内容显示
+        if(div.id==targetid) div.style.display = "block";
+        else div.style.display = "none";
+      }
+      for(var li of lis){ //导航样式
+        if(li==e.target) {
+          li.style.borderBottom = "0.15rem solid #ff6375";
+          li.style.color = "#ff6375";
+        }
+        else {
+          li.style.borderBottom = "0.15rem solid #fec9d1";
+          li.style.color = "#666";
+        }
+      }
+    },
+    selpro(e){
+      var cities=[
+        [{"name":'北京市',"value":101}],
+        [{"name":'天津市',"value":201}],
+        [{"name":'上海市',"value":301}],
+        [{"name":'杭州市',"value":401}],
+        [{"name":'南京市',"value":501}],
+        [{"name":'广州市',"value":601},
+        {"name":'深圳市',"value":602},
+        {"name":'东莞市',"value":603},
+        {"name":'中山市',"value":604},
+        {"name":'江门市',"value":605},
+        {"name":'珠海市',"value":606},
+        {"name":'佛山市',"value":607},
+        {"name":'惠州市',"value":608},
+        {"name":'韶关市',"value":609},
+        {"name":'汕头市',"value":610},
+        {"name":'湛江市',"value":611},
+        {"name":'茂名市',"value":612},
+        {"name":'肇庆市',"value":613},
+        {"name":'梅州市',"value":614},
+        {"name":'汕尾市',"value":615},
+        {"name":'河源市',"value":616},
+        {"name":'阳江市',"value":617},
+        {"name":'清远市',"value":618},
+        {"name":'潮州市',"value":619},
+        {"name":'揭阳市',"value":620},
+        {"name":'云浮市',"value":621}]
+      ];
+      var i=e.target.selectedIndex;
+      if(i>0){
+        var cts=cities[i-1]; //获得城市子数组
+        var frag=document.createDocumentFragment(); //创建文档片段frag
+        frag.appendChild(new Option("请选择"));
+        for(var c of cts) frag.appendChild(new Option(c.name,c.value));
+        city.innerHTML=""; //先清空旧内容
+        city.appendChild(frag);//将frag整体追加到selCts中
+      }
+    },
+    selcity(e){
+      var regions=[
+        [{"name":'越秀区',"value":60101},{"name":'荔湾区',"value":60101}], //广州
+        [{"name":'罗湖区',"value":60201}, //深圳
+        {"name":'福田区',"value":60202},
+        {"name":'南山区',"value":60203},
+        {"name":'宝安区',"value":60204},
+        {"name":'龙岗区',"value":60205},
+        {"name":'盐田区',"value":60206},
+        {"name":'龙华区',"value":60207},
+        {"name":'坪山区',"value":60208}],
+        [{"name":'东城街道',"value":60301},{"name":'南城街道',"value":60302}], //东莞
+        [{"name":'小榄镇',"value":60301},{"name":'黄圃镇',"value":60302}], //中山
+      ];
+      var i=e.target.selectedIndex;
+      if(i>0){
+        var reg=regions[i-1]; //获得城市子数组
+        var frag=document.createDocumentFragment(); //创建文档片段frag
+        frag.appendChild(new Option("请选择"));
+        for(var r of reg) frag.appendChild(new Option(r.name,r.value));
+        region.innerHTML=""; //先清空旧内容
+        region.appendChild(frag);//将frag整体追加到selCts中
+      }
+    },
+    submit(){ //预约提交
+      if(this.uname!="" && this.uphone!="" && this.uregion!="" && this.uprovince!="" && this.ucity!="" && this.uaddress!="" && this.ukg!="" && this.udate!=""){
+        this.axios.post("/user/appoint",qs.stringify({
+          uname:this.uname,
+          uphone:this.uphone,
+          uregion:this.uregion,
+          uprovince:this.uprovince,
+          ucity:this.ucity,
+          uaddress:this.uaddress,
+          ukg:this.ukg,
+          udate:this.udate
+          }),{
+            emulateJSON: true
+          },{
+            headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
+          }).then(result=>{
+            ordermsg.style.display="block";
+            ordermsg.innerHTML=result.data.msg;
+        })
+        /*一次预约成功后,界面清空*/
+        this.uname="";
+        this.uphone="";
+        this.uregion="";
+        this.uprovince="";
+        this.ucity="";
+        this.uaddress="";
+        this.ukg="";
+        this.udate="";
+      }else {
+        ordermsg.style.display="block";
+        ordermsg.innerHTML="所有带*的为必填项";
+      }
+    }
+  }
+};
 </script>
 <style scoped>
+.main{
+  width: 100%;
+}
 .container {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  padding-top:3.75rem;
 }
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
+  }
+  .order{
+    height: 52rem;
   }
 }
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
   }
+  .order{
+    height: 41rem;
+  }
 }
 @media (min-width: 992px) {
   .container {
     max-width: 960px;
   }
+  .order{
+    height: 41rem;
+  }
 }
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
+  }
+  .order{
+    height: 32rem;
   }
 }
 .order {
@@ -350,9 +449,12 @@ export default {};
   color: #666;
   cursor: pointer;
 }
+.order-nav li.active{
+  border-bottom: 0.15rem solid #ff6375;
+  color:#ff6375;
+}
 .order-box {
   width: 100%;
-  position: relative;
   margin: 0 auto;
 }
 .order-content1,
@@ -360,7 +462,6 @@ export default {};
 .order-content3 {
   width: 100%;
   margin-top: 3rem;
-  display: flex;
 }
 .oder-btn {
   display: block;
@@ -368,7 +469,7 @@ export default {};
   padding: 0.25rem 0;
   border: 2px solid #f07c87;
   border-radius: 0.25rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #f07c87;
   text-align: center;
   margin-left: 2rem;
@@ -379,11 +480,13 @@ export default {};
   padding-right: 4rem;
   line-height: 2rem;
   font-size: 1rem;
+  float: left;
 }
 .Img {
   width: 55%;
   display: flex;
   flex-wrap: wrap;
+  float: left;
 }
 .Img li {
   margin-left: 0.75rem;
@@ -429,16 +532,20 @@ export default {};
     margin-left: 5px;
   }
 }
-.hide {
-  display: none;
-}
-/* 在线预约 input区域 */
 .order2 {
   background-color: #fee7e7;
   width: 100%;
   margin: 2.5rem auto;
   padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
+  padding-top: 0.5rem;
+}
+.alert{
+  width: 100%;
+  text-align: center;
+  font-size:0.5rem;
+  color:#f00;
+  display:none;
+  padding:0;
 }
 .info {
   width: 100%;

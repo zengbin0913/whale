@@ -1,6 +1,6 @@
 <template>
   <div>
-     <my-header></my-header>
+     <my-header class="header bg-color"></my-header>
     <div class="main">
       <div class="reg-title">
         <ul class="reg-progress">
@@ -19,7 +19,6 @@
               <span class="star">*</span> 会员类型
             </b>
             <label>
-            <!--切换获得企业或个人id值显示不同的注册页面内容-->
               <input id="comp-tab" type="radio" name="tab" value="comp" @click="tab">企业
             </label>
             <label>
@@ -82,14 +81,14 @@
               <b class="title">
                 <span class="star">*</span> 手机号码
               </b>
-              <input type="password" placeholder="请输入手机号码" id="ph" v-model="phone" @focus="msg_vail" @blur="msg2_vail">
+              <input type="text" placeholder="请输入手机号码" id="ph" v-model="phone" @focus="msg_vail" @blur="msg2_vail">
               <span class="msg"></span>
             </li>
             <li>
               <b class="title">
                 <span class="star">*</span> 电子邮箱
               </b>
-              <input type="password" placeholder="请输入合法的电子邮箱" id="em" v-model="email" @focus="msg_vail"  @blur="msg2_vail">
+              <input type="text" placeholder="请输入合法的电子邮箱" id="em" v-model="email" @focus="msg_vail"  @blur="msg2_vail">
               <span class="msg"></span>
             </li>
             <li>
@@ -103,13 +102,19 @@
             </li>
           </ul>
         </div>
-        <div class="btns"><button class="reg-btn">立即注册</button></div>
+        <div class="btns"><button class="reg-btn" @click="register">立即注册</button></div>
+      </div>
+      <div class="reg-success hide">
+          <div class="reg-notice">恭喜您！会员注册成功</div>
+          <div class="reg-msg" id="dec"></div>
+          <button class="reg-login" @click="ends">立即登录</button>
       </div>
     </div>
     <my-footer></my-footer>
   </div>
 </template>
 <script>
+import qs from "qs";
 export default {
   data(){
     return{ /*个人*/
@@ -122,7 +127,10 @@ export default {
       cupwd:"",/*企业*/
       rcupwd:"",
       cuname:"",
-      company_name:""
+      company_name:"",
+      num:0,   //注册选项填的数目
+      status:0, /*企业个人之间切换0-个人默认 1-企业*/
+      timer:"", //定时器
     }
   },
   methods:{
@@ -131,15 +139,17 @@ export default {
       if(tabid=="comp-tab"){
           comp.style.display="block";
           pers.style.display="none";
-      }else{
+          this.status=1;
+      } else{
         comp.style.display="none";
         pers.style.display="block";
+        this.status=0;
       } 
     },
     msg_vail(e){ /*文本框聚焦*/
       e.target.nextElementSibling.style.display="block";e.target.nextElementSibling.style.backgroundColor="#000";
       if(e.target.id=="u" ||e.target.id=="cu")/*用户名*/
-        e.target.nextElementSibling.innerHTML="会员名称,3-12位字母或数字的组合";
+        e.target.nextElementSibling.innerHTML="会员名称,3-12位字母或数组的组合";
         /*密码*/
       if(e.target.id=="p" || e.target.id=="cp" || e.target.id=="rp" || e.target.id=="rcp") 
         e.target.nextElementSibling.innerHTML="6-12字母数字下划线组合,包含大写字母和数字";
@@ -168,6 +178,7 @@ export default {
             else{
               e.target.nextElementSibling.innerHTML="用户名可用";
               e.target.nextElementSibling.style.backgroundColor="#0d0";
+              this.num++;
             }
           })
         }
@@ -180,7 +191,6 @@ export default {
           e.target.nextElementSibling.style.backgroundColor="#f00";
         }
         else {
-          //密码的强度根据获取输入的长度而改变 
           if(upwd.length>=6 &&upwd.length<=8){
             e.target.nextElementSibling.innerHTML="密码强度弱";
             e.target.nextElementSibling.style.backgroundColor="#f0f";
@@ -192,6 +202,7 @@ export default {
             e.target.nextElementSibling.innerHTML="密码强度强";
             e.target.nextElementSibling.style.backgroundColor="#0d0";
           }
+          this.num++;
         }
       }
       if(e.target.id=="rp"){/*确认密码*/
@@ -206,6 +217,7 @@ export default {
           if(upwd==rupwd){
             e.target.nextElementSibling.innerHTML="密码正确";
             e.target.nextElementSibling.style.backgroundColor="#0d0";
+            this.num++;
           }else{
             e.target.nextElementSibling.innerHTML="两次输入的密码不一致";
             e.target.nextElementSibling.style.backgroundColor="#f00";
@@ -222,6 +234,7 @@ export default {
         else {
           e.target.nextElementSibling.innerHTML="手机号码可用";
           e.target.nextElementSibling.style.backgroundColor="#0d0";
+          this.num++;
         }
       }
        if(e.target.id=="em"){/*电子邮箱*/
@@ -234,6 +247,7 @@ export default {
         else {
           e.target.nextElementSibling.innerHTML="邮箱可用";
           e.target.nextElementSibling.style.backgroundColor="#0d0";
+          this.num++;
         }
       }
       if(e.target.id=="vali"){ /*验证码判断*/
@@ -253,6 +267,7 @@ export default {
         else{
           msg.innerHTML="验证码正确";
           msg.style.backgroundColor="#0d0";
+          this.num++;
         }
       }
       if(e.target.id=="cp"){/*企业密码*/
@@ -274,6 +289,7 @@ export default {
             e.target.nextElementSibling.innerHTML="密码强度强";
             e.target.nextElementSibling.style.backgroundColor="#0d0";
           }
+          this.num++;
         }
       }
       if(e.target.id=="rcp"){/*确认密码*/
@@ -288,6 +304,7 @@ export default {
           if(cupwd==rcupwd){
             e.target.nextElementSibling.innerHTML="密码正确";
             e.target.nextElementSibling.style.backgroundColor="#0d0";
+            this.num++;
           }else{
             e.target.nextElementSibling.innerHTML="两次输入的密码不一致";
             e.target.nextElementSibling.style.backgroundColor="#f00";
@@ -310,6 +327,7 @@ export default {
             else{
               e.target.nextElementSibling.innerHTML="用户名可用";
               e.target.nextElementSibling.style.backgroundColor="#0d0";
+              this.num++;
             }
           })
         }
@@ -317,7 +335,6 @@ export default {
       if(e.target.id=="company"){ /*公司名称*/
         var company_name=this.company_name; 
         var reg=/^[\u4e00-\u9fa5]+$/
-        // 至少一个中文？？ + 至少一个 多了不限
         if(!company_name){
           e.target.nextElementSibling.innerHTML="公司名称不能为空";
           e.target.nextElementSibling.style.backgroundColor="#f00";
@@ -329,6 +346,7 @@ export default {
         else{
           e.target.nextElementSibling.innerHTML="公司名称可用";
           e.target.nextElementSibling.style.backgroundColor="#0d0";
+          this.num++;
         }
       }
     },
@@ -343,7 +361,76 @@ export default {
         code+=codeChars[index];//组合成指定字符验证码
       }
         valicode.innerHTML = code;//将生成验证码赋值到显示区
-    }
+    },
+    register(e){ //注册按钮  
+      if(this.num==6 && this.status==0){ //个人
+        var uname=this.uname;
+        var upwd=this.upwd;
+        var email=this.email;
+        var phone=this.phone;
+        this.axios.post("/user/reg",qs.stringify({
+          uname:uname,
+          upwd:upwd,
+          phone:phone,
+          email:email
+        }),{emulateJSON: true},{
+           headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
+        }).then(result=>{
+          console.log(result);
+          if(result.data.code==-1) alert(`${result.data.msg}`);
+          else{
+            var reg_main=e.target.parentElement.parentElement;
+            var reg_success=e.target.parentElement.parentElement.nextElementSibling;
+            reg_main.style.display="none";
+            reg_success.style.display="block";
+            var n=10; //倒计时
+            this.timer=setInterval(()=>{	
+              dec.innerHTML=`${n}秒后自动登录系统...`;
+              n--;
+              if(n==0){
+                this.$router.push("/login");
+                clearInterval(this.timer);
+              }
+            },1000);
+          }
+        })
+      }
+      if(this.num==4 && this.status==1){ //企业
+        var cuname=this.cuname;
+        var cupwd=this.cupwd;
+        var company_name=this.company_name;
+        this.axios.post("/user/companyreg",qs.stringify({
+          cuname:cuname,
+          company_name:company_name,
+          upwd:cupwd
+        }),{emulateJSON: true},{
+           headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
+        }).then(result=>{
+          if(result.data.code==-1) alert(`${result.data.msg}`);
+          else{
+            var reg_main=e.target.parentElement.parentElement;
+            var reg_success=e.target.parentElement.parentElement.nextElementSibling;
+            reg_main.style.display="none";
+            reg_success.style.display="block";
+            var n=10; //倒计时
+            this.timer=setInterval(()=>{	
+              dec.innerHTML=`${n}秒后自动登录系统...`;
+              n--;
+              if(n==0){
+                this.$router.push("/login");
+                clearInterval(this.timer);
+              }
+            },1000);
+          }
+        })
+      }
+    },
+    ends(){ //手动干预进入登录页面
+      clearInterval(this.timer);
+      this.$router.push("/login");
+    },
+  },
+  computed: {
   },
   mounted(){
     this.createCode(4);
@@ -353,6 +440,7 @@ export default {
 <style scoped>
 .main{
   width: 100%;
+  padding-top:3.75rem;
 }
 .reg-title,
 .reg-main {
@@ -395,7 +483,6 @@ export default {
 .reg-content .types input {
   margin-left: 1rem;
 }
-
 .reg-details li {
   width: 100%;
   height: 3rem;
@@ -409,11 +496,10 @@ export default {
 }
 .reg-details li input {
   width: 18rem;
-  outline: 0;
+  outline: none;
   border-radius: 0.25rem;
   padding-left: 0.25rem;
   font-size: 0.875rem;
-  border:2px solid #ccc;
 }
 .reg-details li .msg {
   display: none;
@@ -456,17 +542,53 @@ export default {
   width: 18rem;
   height: 2.5rem;
   margin-top:3rem;
-  margin-bottom:3rem;
+  margin-bottom:6rem;
   margin-left:6rem;
   background: #ff6375;
-  font-size: 16px;
+  font-size: 1rem;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 0.25rem;
   text-align: center;
   outline: 0;
   border: 0;
 }
+.reg-btn:hover{
+  background: #0569D5;
+}
 .hide{
   display:none;
 }
+.reg-success{
+  width: 20rem;
+  margin:6rem auto;
+  text-align: center;
+  padding:1rem 0;
+}
+.reg-notice{
+  width: 100%;
+  color:#4fa800;
+  text-align: center;
+  margin-bottom:3rem;
+}
+.reg-msg{
+  font-size:0.875rem;
+  text-align: center;
+  margin-bottom:2rem;
+  color:#f00;
+}
+.reg-login{
+  display: block;
+  width: 16rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  background: #4fa800;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 0.25rem;
+  text-align: center;
+  outline: 0;
+  border: 0;
+  margin:0 auto;
+}
+.reg-login:hover{text-decoration: none;}
 </style>

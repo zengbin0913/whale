@@ -6,6 +6,15 @@ body,button,form,h1,h2,h3,h4,h5,h6,hr,input,li,ol,p,pre,td,th,ul,div{
 }
 body{width: 100%; background: #ffffff;}
 table{border-collapse:collapse;}
-a{text-decoration:none;}
+a,a:hover{text-decoration:none;}
 ul{list-style:none;}
 .bg-color {background: #ff6375; opacity:0.8;}
+.header{
+  position:fixed;
+  top:0;left:0;
+  z-index:999;
+  height: 3.75rem;
+}
+.hide{
+  display:none;
+}

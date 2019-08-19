@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <my-header class="header" :style="{'background-color':bgColor}"></my-header>
     <!-- 这是轮播图部分  -->
     <div id="demo" class="carousel" data-ride="carousel">
       <!-- 1.轮播图片carousel-inner-->
@@ -39,17 +40,40 @@ export default {
   },
   created(){
     this.play();
+  },
+  computed:{
+    bgColor(){
+      document.onscroll=function(){
+      var header=document.getElementsByClassName("header")[0];
+      var scoll=document.documentElement.scrollTop||document.body.scrollTop;
+      if(scoll>0) {header.style.backgroundColor="#ff6375";header.style.opacity=scoll/440;}
+      else {header.style.backgroundColor="";header.style.opacity="";}
+      }
+    }
   }
 };
 </script>
 <style scoped>
+.main{
+  width: 100%;
+  height: 27.5rem;
+}
+.carousel{
+  height: 27.5rem;
+}
+.carousel-inner,.carousel-item{
+  height:100%;
+}
 /* 轮播图区域 */
 .carousel-indicators {
-  margin-bottom: 1.875rem;
+  display:fixed;
+  bottom:1.875rem; left:0;
+  height: 4rem;
   display: flex;
   padding-left: 0;
   margin-right: 15%;
   margin-left: 15%;
+  padding-top:3.75rem;
 }
 /* 1.2轮播图左右箭头 */
 .carousel-control-prev,.carousel-control-next{
@@ -69,7 +93,7 @@ export default {
   width:5rem;
   height: 0.6125rem;
   margin-right: 0.678rem;
-  background: #444;
+  background: #fff;
   opacity: 0.3;
   -moz-opacity: 0.3;
   filter: alpha(opacity=30);
@@ -92,5 +116,6 @@ export default {
   width: 31.25rem;
   height: 23.75rem;
   margin-left: 50rem;
+  margin-top:2.5rem;
 }
 </style>

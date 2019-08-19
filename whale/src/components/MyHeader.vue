@@ -1,5 +1,5 @@
 <template>
-  <div id="header" class="bg-color">
+  <div id="header">
     <div class="navbar navbar-expand-md  navbar-light pb-sm-0 pb-md-1">
       <button class="navbar-toggler" @click="handle">
         <span class="navbar-toggler-icon"></span>
@@ -46,10 +46,7 @@ export default {
 <style scoped>
 #header {
   width: 100%;
-  /* height: 4rem; */
   font-size: 0.875rem;
-  /* position:fixed; 
-  z-index:9999; */
 }
 .logon {
   background-image: url("../assets/img/003808831.jpg");

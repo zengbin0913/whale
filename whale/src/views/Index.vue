@@ -1,7 +1,6 @@
 <template>
   <div>
-    <my-header></my-header>
-    <carousel :list="list"></carousel>
+    <carousel :list="list"></carousel> <!--轮播图中有头部导航条,固定在顶端-->
     <!-- 项目规划区域-->
     <div id="intr">
       <div class="my_width">

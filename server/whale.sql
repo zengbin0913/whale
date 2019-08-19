@@ -43,10 +43,9 @@ CREATE TABLE whale_appointments(
   address VARCHAR(128),       #详细地址
   cellphone VARCHAR(16),      #手机
   kg TINYINT,                 #旧衣物的重量 0-->请选择 1-->5到10kg  2-->10到20kg   3-->21到30kg   4-->30kg以上
-  status TINYINT,             #预约状态 1-预约成功 0-预约失败
   order_time BIGINT           #预约时间时间
 );
-INSERT INTO whale_appointments VALUES(NULL,1,"张三","广东省","深圳市","龙华区","明治街道嘉熙业广场11楼","13135362978",1,1,1565350839801);
+INSERT INTO whale_appointments VALUES(NULL,1,"张三","广东省","深圳市","龙华区","明治街道嘉熙业广场11楼","13135362978",1,1565350839801);
 
 /*1.4捐赠商品信息表*/
 CREATE TABLE whale_family(  
@@ -89,10 +88,10 @@ CREATE TABLE whale_nav(
   nhref VARCHAR(128)       #跳转地址
 );
 INSERT INTO  whale_nav VALUES(NULL,"首页","/index");
-INSERT INTO  whale_nav VALUES(NULL,"白鲸鱼APP","/App");
+INSERT INTO  whale_nav VALUES(NULL,"白鲸鱼APP","/app");
 INSERT INTO  whale_nav VALUES(NULL,"预约回收","/waybill");
 INSERT INTO  whale_nav VALUES(NULL,"鲸鱼公益","/donate");
-INSERT INTO  whale_nav VALUES(NULL,"企业捐赠","/corporation");
+INSERT INTO  whale_nav VALUES(NULL,"企业捐赠","/company");
 INSERT INTO  whale_nav VALUES(NULL,"登录/注册","/login");
 
 /*1.8企业捐赠轮播广告商品*/
