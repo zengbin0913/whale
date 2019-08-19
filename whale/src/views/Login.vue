@@ -113,6 +113,7 @@ input {
   font-size: 0.75rem;
   outline:none;
   border-radius: 0.25rem;
+  border:2px solid #ccc;
 }
 button {
   width: 20rem;

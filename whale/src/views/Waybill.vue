@@ -2,6 +2,7 @@
   <div>
     <my-header></my-header>
     <div class="container">
+      <!-- 顶部用户须知 -->
       <div class="order">
         <h2 class="order-title">用户须知</h2>
         <ul class="order-nav">
@@ -10,7 +11,9 @@
           <li id="order-tab3">其它说明</li>
         </ul>
         <div class="order-box">
+          <!-- 切换图文区域 回收说明 -->
           <div class="order-content1">
+            <!-- 左侧文字区域 默认第一个-->
             <div class="txt">
               <h3 class="content-title">回收说明</h3>
               <div class="content-txt">
@@ -19,8 +22,10 @@
                 <p>3、快递小哥会在您预约的当天与您联系收取旧衣物，如果下午15:00仍无联系，可电话联系我们处理；</p>
                 <p>4、快递小哥收取快件后，您可以通过个人中心查看物流情况。</p>
               </div>
+              <!-- btn按钮  -->
               <a href="#order2" class="oder-btn">立即预约</a>
             </div>
+            <!-- 右侧的图片区域 -->
             <ul class="Img">
               <li>
                 <img src="../assets/img/leibie1.jpg" />
@@ -42,6 +47,7 @@
               </li>
             </ul>
           </div>
+          <!-- part2 包装说明 -->
           <div class="order-content2 hide">
             <div class="txt">
               <h3 class="content-title">包装说明</h3>
@@ -74,6 +80,7 @@
               </li>
             </ul>
           </div>
+          <!-- part3  其他说明 -->
           <div class="order-content3 hide">
             <div class="txt">
               <h3 class="content-title">其它说明</h3>
@@ -108,6 +115,7 @@
           </div>
         </div>
       </div>
+      <!--在线预约 input部分  -->
       <div class="order2" id="order2">
         <h2 class="order-title">在线预约</h2>
         <ul class="info">
@@ -217,6 +225,7 @@
         </ul>
         <button class="btn">提交</button>
       </div>
+      <!-- 流程示意图 -->
       <div class="pro">
         <ul>
           <li>
@@ -263,6 +272,7 @@
           </li>
         </ul>
       </div>
+      <!-- 底部程序扫码区域 -->
       <div class="order3">
         <h2 class="order-title">白鲸鱼移动端</h2>
         <p style="text-align:center;">更极致体验，更便捷操作</p>
@@ -405,7 +415,7 @@ export default {};
     width: 100%;
   }
   .info li.place select + select {
-    margin-left: 0.85rem;
+    margin-left: 0.5rem;
   }
 }
 @media (min-width: 992px) {
@@ -416,12 +426,13 @@ export default {};
     width: 50%;
   }
   .info li.place select + select {
-    margin-left: 0.5rem;
+    margin-left: 5px;
   }
 }
 .hide {
   display: none;
 }
+/* 在线预约 input区域 */
 .order2 {
   background-color: #fee7e7;
   width: 100%;
@@ -451,7 +462,16 @@ export default {};
   color: #f00;
 }
 .info li input,
-.info li #kg,
+.info li #kg
+ {
+  margin-left: 0.25rem;
+  width: 65%;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  outline: 0;
+  border:2px solid #ccc;
+}
+
 .info li div {
   margin-left: 0.25rem;
   width: 65%;
@@ -461,8 +481,9 @@ export default {};
 }
 .info li.place select {
   height: 2.5rem;
-  width: 30%;
+  width: 32%;
   border-radius: 0.25rem;
+  border:2px solid #ccc;
 }
 .btn {
   display: block;
@@ -476,6 +497,7 @@ export default {};
   font-weight: bold;
   margin: 0 auto;
 }
+/* 流程示意图 */
 .pro ul {
   padding-left: 1rem;
   width: 100%;
