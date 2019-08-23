@@ -15,37 +15,37 @@
         <ul class="foot2-ul">
           <li class="foot2-li1">用户服务</li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">账号密码</a>
+            <router-link to="/footerdetail">账号密码</router-link>
           </li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">预约流程</a>
+            <router-link to="/footerdetail">预约流程</router-link>
           </li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">常见问题</a>
+            <router-link to="/footerdetail">常见问题</router-link>
           </li>
         </ul>
         <ul class="foot2-ul">
           <li class="foot2-li1">开发者服务</li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">开放平台</a>
+            <router-link to="/footerdetail">开放平台</router-link>
           </li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">开发文档</a>
+            <router-link to="/footerdetail">开发文档</router-link>
           </li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">用户须知</a>
+            <router-link to="/footerdetail">用户须知</router-link>
           </li>
         </ul>
         <ul class="foot2-ul">
           <li class="foot2-li1">关于我们</li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">关于我们</a>
+            <router-link to="/about">关于我们</router-link>
           </li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">合作伙伴</a>
+            <router-link to="/corporation">合作伙伴</router-link>
           </li>
           <li class="foot2-li2">
-            <a href="#" target="_blank">用户须知</a>
+            <router-link to="/footerdetail">用户须知</router-link>
           </li>
         </ul>
       </div>

@@ -1,12 +1,12 @@
 <template>
-  <div id="header" class="bg-color">
+  <div id="header">
     <div class="navbar navbar-expand-md  navbar-light pb-sm-0 pb-md-1">
       <button class="navbar-toggler" @click="handle">
         <span class="navbar-toggler-icon"></span>
       </button>
       <span class="navbar-brand logon"></span>
       <div class="collapse navbar-collapse" id="d1">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" @click="logout">
           <li class="nav-item" v-for="(item,i) of list" :key="i">
             <router-link :to="item.nhref" class="nav-link" :class="{active:item.nhref==path}">{{item.article}}</router-link>
           </li>
@@ -36,6 +36,12 @@ export default {
         this.list=result.data;
         this.path=this.$route.path; //获得地址栏中的路径
       })
+    },
+    logout(e){
+      if(e.target.innerHTML=="退出")
+        this.axios.get("/user/logout").then(result => {
+          if(result.data.code==200)this.$router.push("/login");
+        });
     }
   },
   created(){
@@ -46,10 +52,7 @@ export default {
 <style scoped>
 #header {
   width: 100%;
-  /* height: 4rem; */
   font-size: 0.875rem;
-  /* position:fixed; 
-  z-index:9999; */
 }
 .logon {
   background-image: url("../assets/img/003808831.jpg");

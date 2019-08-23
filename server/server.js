@@ -36,6 +36,6 @@ server.use("/user",userRouter); //挂载路由
 const indexRouter=require("./routes/index.js");
 server.use("/index",indexRouter); //挂载路由
 
-//引入自定义首页模块
+//引入自定义企业轮播图模块
 const companyRouter=require("./routes/company.js");
 server.use("/company",companyRouter); //挂载路由
