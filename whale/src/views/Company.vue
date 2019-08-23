@@ -91,7 +91,7 @@
             <img src="../assets/img/164847231.jpg" alt="有闲有品" />
           </li>
           <li class="friend-li friend-li2">
-            <a href="#" target="_blank">更多</a>
+            <a href="" target="_blank">更多</a>
           </li>
         </ul>
       </div>
