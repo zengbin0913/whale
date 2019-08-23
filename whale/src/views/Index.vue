@@ -1,6 +1,7 @@
 <template>
   <div>
-    <carousel :list="list"></carousel> <!--轮播图中有头部导航条,固定在顶端-->
+    <carousel :list="list"></carousel>
+    <!--轮播图中有头部导航条,固定在顶端-->
     <!-- 项目规划区域-->
     <div id="intr">
       <div class="my_width">
@@ -14,31 +15,31 @@
         </div>
       </div>
     </div>
-     <!-- 公益平台大区域 上--> 
+    <!-- 公益平台大区域 上-->
     <div class="co2">
       <div class="co2-h1">
         <h1>国内领先的旧衣物捐赠环保公益平台</h1>
         <p class="text-center">环保公益不是我们做了多少，而是所有人都做一点点</p>
       </div>
-      <!-- 平台数据展示 下--> 
-      <div class="bjyju d-flex ">
-        <div class="bjyju-item ">
+      <!-- 平台数据展示 下-->
+      <div class="bjyju d-flex">
+        <div class="bjyju-item">
           <div class="bjyju-item-span">
-          <h4 class="bjyju-item-h4">回收衣物</h4>
-          <div class="span-text">
-            <span>1205147KG</span>
+            <h4 class="bjyju-item-h4">回收衣物</h4>
+            <div class="span-text">
+              <span>1205147KG</span>
             </div>
           </div>
           <div class="bjyju-item-span">
-          <h4 class="bjyju-item-h4">捐赠物资</h4>
-          <div class="span-text">
-            <span>10122KG</span>
+            <h4 class="bjyju-item-h4">捐赠物资</h4>
+            <div class="span-text">
+              <span>10122KG</span>
             </div>
           </div>
           <div class="bjyju-item-span">
-          <h4 class="bjyju-item-h4">捐赠款项</h4>
-          <div class="span-text">
-            <span>62575万元</span>
+            <h4 class="bjyju-item-h4">捐赠款项</h4>
+            <div class="span-text">
+              <span>62575万元</span>
             </div>
           </div>
         </div>
@@ -80,10 +81,12 @@
       <div class="tab-box_div2">
         <div class="tbm-info">
           <p class="tbm-title">年产超过5000万吨，相当于2个大庆油田</p>
-          <p class="tbm-txt">据不完全统计，国内每年产生的超过5000万吨的旧衣服中，真正被有效利用的不到10%，随着人们生活水平的提高，旧衣服造成的资源量费正在进一步增加中 。</p>
+          <p
+            class="tbm-txt"
+          >据不完全统计，国内每年产生的超过5000万吨的旧衣服中，真正被有效利用的不到10%，随着人们生活水平的提高，旧衣服造成的资源量费正在进一步增加中 。</p>
           <div class="tab-info-imgs d-flex">
-            <img src="../assets/img/xianzhuang1-1.jpg" alt />
-            <img src="../assets/img/xianzhuang1-2.jpg" alt />
+            <img src="../assets/img/xianzhuang1-1.jpg" />
+            <img src="../assets/img/xianzhuang1-2.jpg" />
           </div>
         </div>
       </div>
@@ -95,46 +98,46 @@
         <div class="news-txt">公益活动，新闻趣事，官方公告一目了然</div>
         <div class="news-first">
           <div class="news-second">
-            <a href="#">
-              <img src="../assets/img/025423911.jpg" alt />
+            <a href="javascript:;">
+              <img src="../assets/img/025423911.jpg" />
             </a>
-            <a href="#" class="news-name">四川苟哇村一松寨当地小学活动反馈</a>
-          </div>
-          <div class="news-second ">
-            <a href="#">
-              <img src="../assets/img/01482874226381.jpg" alt />
-            </a>
-            <a href="#" class="news-name">白鲸鱼重聚青海玉树藏族自治州捐赠旧衣服</a>
+            <a href="javascript:;" class="news-name">四川苟哇村一松寨当地小学活动反馈</a>
           </div>
           <div class="news-second">
-            <a href="#">
-              <img src="../assets/img/014425411.jpg" alt />
+            <a href="javascript:;">
+              <img src="../assets/img/01482874226381.jpg"/>
             </a>
-            <a href="#" class="news-name">开年第一波，您捐赠的衣物已经送达</a>
+            <a href="javascript:;" class="news-name">白鲸鱼重聚青海玉树藏族自治州捐赠旧衣服</a>
+          </div>
+          <div class="news-second">
+            <a href="javascript:;">
+              <img src="../assets/img/014425411.jpg" />
+            </a>
+            <a href="javascript:;" class="news-name">开年第一波，您捐赠的衣物已经送达</a>
           </div>
         </div>
         <div class="news-first mt-4">
           <div class="news-second">
-            <a href="#">
-              <img src="../assets/img/191658741.jpg" alt />
+            <a href="javascript:;">
+              <img src="../assets/img/191658741.jpg"/>
             </a>
-            <a href="#" class="news-name">四川苟哇村一松寨当地小学活动反馈</a>
+            <a href="javascript:;" class="news-name">四川苟哇村一松寨当地小学活动反馈</a>
           </div>
           <div class="news-second">
-            <a href="#">
-              <img src="../assets/img/023439201.jpg" alt />
+            <a href="javascript:;">
+              <img src="../assets/img/023439201.jpg"/>
             </a>
-            <a href="#" class="news-name">旧衣服捐赠之四川攀枝花贫困区反馈</a>
+            <a href="javascript:;" class="news-name">旧衣服捐赠之四川攀枝花贫困区反馈</a>
           </div>
           <div class="news-second">
-            <a href="#">
-              <img  src="../assets/img/1608261718003.png" alt />
+            <a href="javascript:;">
+              <img src="../assets/img/1608261718003.png"/>
             </a>
-            <a href="#" class="news-name">旧衣公益新疆阿克苏白鲸鱼留下爱的足迹</a>
+            <a href="javascript:;" class="news-name">旧衣公益新疆阿克苏白鲸鱼留下爱的足迹</a>
           </div>
         </div>
         <div class="news-third">
-          <a class="news-more" href="#">查看更多</a>
+          <router-link class="news-more" to="/donate">查看更多</router-link>
         </div>
       </div>
     </div>
@@ -146,7 +149,7 @@
         <div class="show_map">
           <div>
             <span class="kt_city"></span>
-             <span>开通城市</span>
+            <span>开通城市</span>
           </div>
           <div>
             <span class="help_city"></span>
@@ -305,9 +308,8 @@
             <img src="../assets/img/173623131.jpg" alt="新华爱心公益基金会" />
           </li>
           <li class="friend-li friend-li2">
-             <a href="#" target="_blank" >更多</a>
+            <router-link to="/corporation" >更多</router-link>
           </li>
-          
         </ul>
       </div>
     </div>
@@ -351,15 +353,25 @@ export default {
   color: #ffffff;
   box-sizing: border-box;
 }
-/*内容区域公共宽度1200px*/ 
-.my_width,.co2-h1,.co2-h1 h1,.bjyju-item {
-  width:75rem;
+/*内容区域公共宽度1200px*/
+.my_width,
+.co2-h1,
+.co2-h1 h1,
+.bjyju-item {
+  width: 75rem;
 }
-/*内容区域文字居中显示*/ 
-.my_width .plan,#intr .my_width h3,.co2,.co2-h1 h1,.bjyju-item,.bjyju-item-h4,.span-text span {
+/*内容区域文字居中显示*/
+.my_width .plan,
+#intr .my_width h3,
+.co2,
+.co2-h1 h1,
+.bjyju-item,
+.bjyju-item-h4,
+.span-text span {
   text-align: center;
 }
-.my_width,.bjyju-item {
+.my_width,
+.bjyju-item {
   margin: 0 auto;
 }
 .my_width {
@@ -382,55 +394,61 @@ export default {
 }
 /* <!-- 公益平台大区域平台数据展示--> */
 .co2 {
-  width:100%;
+  width: 100%;
 }
 .co2-h1 {
-    margin:1.25rem auto;
+  margin: 1.25rem auto;
 }
-.co2-h1 h1{
-  font-size:2rem;
+.co2-h1 h1 {
+  font-size: 2rem;
   height: 2.125rem;
-  color:#f17c81;
+  color: #f17c81;
 }
 .co2-h1 p {
-    font-size: 1rem;
-    color: #666666;
-    height:1.3125rem;
-    margin-top:0.8rem;
+  font-size: 1rem;
+  color: #666666;
+  height: 1.3125rem;
+  margin-top: 0.8rem;
 }
-.bjyju-item{
-  display:flex;
-} 
-.bjyju-item span{
-   width:25rem;
-   height:2.5rem;
+.bjyju-item {
+  display: flex;
 }
-.bjyju-item-h4{
-    width:25rem;
-    font-size: 1.375rem;
-    color: #fe7e90;
-    margin-bottom: 0.625rem;
+.bjyju-item span {
+  width: 25rem;
+  height: 2.5rem;
 }
-.span-text{
-    width:25rem;
-    text-align: center;  /*边框居中显示*/
+.bjyju-item-h4 {
+  width: 25rem;
+  font-size: 1.375rem;
+  color: #fe7e90;
+  margin-bottom: 0.625rem;
 }
-.span-text span{
-   font-size: 1.875rem;
-    color: #fe7e90;
-    /* margin: 0 18px;文字距离椭圆外边距 */
-    border: 0.125rem solid #fe7e90;
-    border-radius: 3.125rem;
-    padding: 0.125rem 0;
-    margin-top: 0.625rem;
-    width: 15.5rem; 
-    display: inline-block;
-}  
+.span-text {
+  width: 25rem;
+  text-align: center; /*边框居中显示*/
+}
+.span-text span {
+  font-size: 1.875rem;
+  color: #fe7e90;
+  /* margin: 0 18px;文字距离椭圆外边距 */
+  border: 0.125rem solid #fe7e90;
+  border-radius: 3.125rem;
+  padding: 0.125rem 0;
+  margin-top: 0.625rem;
+  width: 15.5rem;
+  display: inline-block;
+}
 /* <!-- 底部切换现状背景和解决方案--> */
-.statu,.d3 {
+.statu,
+.d3 {
   width: 75rem;
 }
-.statu,.d3,.tab-nav-icon,.tab-box_div,.news-box,.news-more {
+.statu,
+.d3,
+.tab-nav-icon,
+.tab-box_div,
+.news-box,
+.news-more {
   margin: 0 auto;
 }
 .statu .tab-nav-title {
@@ -441,14 +459,14 @@ export default {
   font-size: 1.5rem;
   text-align: center;
   border-top: 0.125rem solid #ddd;
-  margin-top:2rem;
+  margin-top: 2rem;
 }
 .statu :first-child {
   border-top: 0.125rem solid #ff6375 !important;
 }
 .triangle {
   width: 37.5rem;
-  line-height:1rem;
+  line-height: 1rem;
 }
 .tab-nav-icon {
   width: 0;
@@ -473,22 +491,22 @@ export default {
   color: #ffffff;
   background-color: #ff6375;
 }
-.tab-box-list-item:hover{
-  background:#ff6375 !important;
+.tab-box-list-item:hover {
+  background: #ff6375 !important;
 }
-.tab-box-list .tab-box-list-item:not(:first-child){
-  background:#cfcfcf;
+.tab-box-list .tab-box-list-item:not(:first-child) {
+  background: #cfcfcf;
 }
 .tab-box-list-item .p1 {
   font-size: 1.1125rem;
   font-weight: bold;
   margin-bottom: 0.625rem;
-  text-align:center;
+  text-align: center;
 }
 .tab-box-list-item .p2 {
   font-size: 0.875rem;
   margin-bottom: 0;
-  text-align:center;
+  text-align: center;
 }
 .tab-box_div2 .tbm-info {
   width: 55rem;
@@ -507,12 +525,12 @@ export default {
   color: #666;
   line-height: 1.75rem;
   margin-bottom: 1rem;
-  justify-content:start;
+  justify-content: start;
 }
 .tab-info-imgs {
   width: 55rem;
   height: 9.375rem;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 /* ************ 活动资讯----news*****************/
 .news {
@@ -521,11 +539,17 @@ export default {
   background: #fff5f6;
   min-width: 75rem;
 }
-.news-title,.news-txt,.news-second a,.news-more{
+.news-title,
+.news-txt,
+.news-second a,
+.news-more {
   text-align: center;
 }
-.news-first .news-second a,.news-more,.friend-li2 a,.friend-link a{
- text-decoration:none;
+.news-first .news-second a,
+.news-more,
+.friend-li2 a,
+.friend-link a {
+  text-decoration: none;
 }
 /* 内容区域文字和图片 */
 .news-box {
@@ -541,7 +565,7 @@ export default {
 .news-txt {
   font-size: 1rem;
   color: #666;
-  margin-bottom: 1.25rem;  
+  margin-bottom: 1.25rem;
 }
 .news-first,
 .news-third {
@@ -553,7 +577,7 @@ export default {
 .news-second {
   width: 24.125rem;
   height: 15.4375rem;
-  background:#fff;
+  background: #fff;
 }
 .news-first .news-second a {
   color: #666;
@@ -563,9 +587,9 @@ export default {
   height: 12.875rem;
   transition: all 0.5s;
 }
- /**图片悬停缩放 **/ 
-.news-second img:hover{
-   transform:scale(1.01,1.05);
+/**图片悬停缩放 **/
+.news-second img:hover {
+  transform: scale(1.01, 1.05);
 }
 /* 图片下方的文字样式 */
 .news-name {
@@ -581,7 +605,7 @@ export default {
 .news-third {
   width: 75rem;
   height: 2.875rem;
-  margin-top:1rem;
+  margin-top: 1rem;
 }
 /* 查看更多文字 */
 .news-more {
@@ -592,12 +616,14 @@ export default {
   border-radius: 3.125rem;
   font-size: 1.25rem;
 }
-/** 悬停时背景颜色(有变化不是很明显)**/ 
+/** 悬停时背景颜色(有变化不是很明显)**/
 .news-more:hover {
   background: #ff6375;
 }
-/* ???????????????????????*/ 
-*,*::before,*::after {
+/* ???????????????????????*/
+*,
+*::before,
+*::after {
   box-sizing: content-box !important;
 }
 /* <!--国内地图----白鲸鱼的身影  --> */
@@ -607,40 +633,40 @@ export default {
   overflow: hidden;
 }
 .map_title {
-  width:75rem;
-  text-align:center;
-  margin:0 auto;
+  width: 75rem;
+  text-align: center;
+  margin: 0 auto;
   font-weight: 100;
-  padding:2.5rem 0 0;
+  padding: 2.5rem 0 0;
 }
-.map_title_h1{
-  width:75rem;
+.map_title_h1 {
+  width: 75rem;
   text-align: center;
   font-weight: 100;
-  font-size:1.5rem;
+  font-size: 1.5rem;
 }
-.map_title p{
-  font-size:0.875rem;
-  width:75rem;
-  text-align:center;
+.map_title p {
+  font-size: 0.875rem;
+  width: 75rem;
+  text-align: center;
   margin-top: 0.5rem;
 }
-.show_map{
-  display:flex;
-  width:75rem;
-  margin:0 auto;
+.show_map {
+  display: flex;
+  width: 75rem;
+  margin: 0 auto;
 }
-.kt_city{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:red;
+.kt_city {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: red;
 }
-.help_city{
-  background:blue;
-  width:10px;
-  height:10px;
-  border-radius:50%;
+.help_city {
+  background: blue;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 .map_ser {
   width: 46.875rem;
@@ -649,7 +675,7 @@ export default {
   margin: 0 auto;
   position: relative;
 }
-/*各省份文字样式*/ 
+/*各省份文字样式*/
 span {
   font-size: 0.75rem;
   color: #000000;
@@ -658,8 +684,8 @@ span {
 /*.a1,.a2,.a3,.a4,.a5,.a6,.a7,.a8,.a9,.a10,.a11,.a12,.a13,.a14,.a15,.a16,.a17,.a18,.a19,.a20,.a21,.a22,.a23,.a24,.a25,.a26,.a27,.a28{
   position:absolute;
 }*/
-.map_ser>div{
-  position:absolute;
+.map_ser > div {
+  position: absolute;
 }
 .a1 {
   top: 5.5rem;
@@ -701,7 +727,7 @@ span {
   top: 22.5rem;
   left: 35.81rem;
 }
-.a11 { 
+.a11 {
   top: 21.62rem;
   left: 38.62rem;
 }
@@ -721,7 +747,7 @@ span {
   top: 27.5rem;
   left: 34.93rem;
 }
-.a16 { 
+.a16 {
   top: 29.68rem;
   left: 36.93rem;
 }
@@ -737,7 +763,7 @@ span {
   top: 25.68rem;
   left: 27.62rem;
 }
-.a20 { 
+.a20 {
   top: 19.5rem;
   left: 24.12rem;
 }
@@ -749,19 +775,19 @@ span {
   top: 24.06rem;
   left: 9.81rem;
 }
-.a23 {  
+.a23 {
   top: 31.56rem;
   left: 21.75rem;
 }
-.a24 { 
+.a24 {
   top: 29.25rem;
   left: 26.68rem;
 }
-.a25 { 
+.a25 {
   top: 32.68rem;
   left: 28.5rem;
 }
-.a26 { 
+.a26 {
   top: 36.8rem;
   left: 30rem;
 }
@@ -826,16 +852,21 @@ span {
   margin: 0 auto;
 }
 /* <!-- 合作伙伴和友情连接的公共文字样式 --> */
-.friend-title,.friend-txt,.friend-li2,.friend-link-txt,.friend-link-title{
+.friend-title,
+.friend-txt,
+.friend-li2,
+.friend-link-txt,
+.friend-link-title {
   text-align: center;
 }
-/** 字体加粗*/ 
-.friend-title,.friend-li2{
+/** 字体加粗*/
+.friend-title,
+.friend-li2 {
   font-weight: bold;
 }
 /* 标题 */
 .friend-title {
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
   margin-bottom: 1.625rem;
 }
 /* 文字 */
@@ -869,17 +900,17 @@ span {
   font-size: 1.875rem;
   line-height: 6.625rem;
 }
-.friend-li2 a{
-   color: #666666;
+.friend-li2 a {
+  color: #666666;
 }
 /* <!-- 底部友情链接 --> */
 .friend-link {
   width: 100%;
-  height:100px;
+  height: 100px;
   padding: 1rem 0;
   background: #fff;
 }
-/** 标题后的文字样式*/ 
+/** 标题后的文字样式*/
 .friend-link a {
   color: #666666;
   font-size: 1rem;

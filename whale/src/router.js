@@ -7,6 +7,10 @@ import Reg from './views/Reg.vue'
 import Company from './views/Company.vue'
 import App from './views/MyApp.vue'
 import Personal from './views/Personal.vue'
+import Donate from './views/Donate.vue'
+import FooterDetail from './components/FooterDetail.vue'
+import About from './components/About.vue'
+import Corporation from './components/Corporation.vue'
 
 Vue.use(Router)
 
@@ -19,5 +23,9 @@ export default new Router({
     {path:"/reg", component:Reg},
     {path:"/company", component:Company},
     {path:"/app", component:App},
+    {path:"/donate", component:Donate},
+    {path:"/footerdetail", component:FooterDetail},
+    {path:"/about", component:About},
+    {path:"/corporation", component:Corporation},
   ]
 })

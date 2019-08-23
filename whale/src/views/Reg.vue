@@ -157,7 +157,7 @@ export default {
         e.target.nextElementSibling.innerHTML="11位合法的手机号码";  
       if(e.target.id=="em") /*电子邮箱*/  
         e.target.nextElementSibling.innerHTML="合法的电子邮箱"; 
-      if(e.target.id=="company") /*电子邮箱*/  
+      if(e.target.id=="company") /*企业名称*/  
         e.target.nextElementSibling.innerHTML="公司中文全称，注册后不可更改";   
     },
     msg2_vail(e){ /*文本框失去焦点*/
@@ -383,7 +383,7 @@ export default {
             var reg_success=e.target.parentElement.parentElement.nextElementSibling;
             reg_main.style.display="none";
             reg_success.style.display="block";
-            var n=10; //倒计时
+            var n=5; //倒计时
             this.timer=setInterval(()=>{	
               dec.innerHTML=`${n}秒后自动登录系统...`;
               n--;
@@ -412,7 +412,7 @@ export default {
             var reg_success=e.target.parentElement.parentElement.nextElementSibling;
             reg_main.style.display="none";
             reg_success.style.display="block";
-            var n=10; //倒计时
+            var n=5; //倒计时
             this.timer=setInterval(()=>{	
               dec.innerHTML=`${n}秒后自动登录系统...`;
               n--;

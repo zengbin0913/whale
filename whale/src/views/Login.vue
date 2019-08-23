@@ -46,7 +46,7 @@ export default {
       headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
     }).then(result=>{
       if(result.data.code==200) {
-        this.$router.push("/waybill");
+        this.$router.push("/personal");
       }
       else {
         msg.style.display="block";
