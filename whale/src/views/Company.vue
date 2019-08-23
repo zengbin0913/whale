@@ -58,48 +58,48 @@
     </div>
     <div class="friend">
       <div class="friend-box">
-        <div class="friend-title">合作伙伴与媒体</div>
-        <div class="friend-txt">Partners and media</div>
-        <ul class="friend-ul">
-          <li class="friend-li">
-            <img src="../assets/img/023615601.jpg" alt="芝麻信用" />
-          </li>
-          <li class="friend-li">
-            <img src="../assets/img/173047781.jpg" alt="新华爱心公益基金会" />
-          </li>
-          <li class="friend-li">
-            <img src="../assets/img/171620491.jpg" alt="德邦快递" />
-          </li>
-          <li class="friend-li">
-            <img src="../assets/img/171050161.jpg" alt="北京交通大学" />
-          </li>
-          <li class="friend-li" style="margin-right:0;">
-            <img src="../assets/img/170751961.jpg" alt="火彩爱心公益" />
-          </li>
-        </ul>
-        <ul class="friend-ul">
-          <li class="friend-li">
-            <img src="../assets/img/170342371.jpg" alt="新瑞公益" />
-          </li>
-          <li class="friend-li">
-            <img src="../assets/img/165000411.jpg" alt="尚德机构" />
-          </li>
-          <li class="friend-li">
-            <img src="../assets/img/163921621.jpg" alt="闪回收" />
-          </li>
-          <li class="friend-li">
-            <img src="../assets/img/164847231.jpg" alt="有闲有品" />
-          </li>
-          <li class="friend-li friend-li2">
-            <a href="" target="_blank">更多</a>
-          </li>
-        </ul>
+          <div class="friend-title">合作伙伴与媒体</div>
+          <div class="friend-txt">Partners and media</div>
+          <ul class="friend-ul firstul">
+            <li class="friend-li">
+              <img src="../assets/img/023615601.jpg" alt="芝麻信用" />
+            </li>
+            <li class="friend-li">
+              <img src="../assets/img/173047781.jpg" alt="新华爱心公益基金会" />
+            </li>
+            <li class="friend-li">
+              <img src="../assets/img/171620491.jpg" alt="德邦快递" />
+            </li>
+            <li class="friend-li">
+              <img src="../assets/img/171050161.jpg" alt="北京交通大学" />
+            </li>
+            <li class="friend-li" style="margin-right:0;">
+              <img src="../assets/img/170751961.jpg" alt="火彩爱心公益" />
+            </li>
+          </ul>
+          <ul class="friend-ul">
+            <li class="friend-li">
+              <img src="../assets/img/170342371.jpg" alt="新瑞公益" />
+            </li>
+            <li class="friend-li">
+              <img src="../assets/img/165000411.jpg" alt="尚德机构" />
+            </li>
+            <li class="friend-li">
+              <img src="../assets/img/163921621.jpg" alt="闪回收" />
+            </li>
+            <li class="friend-li">
+              <img src="../assets/img/164847231.jpg" alt="有闲有品" />
+            </li>
+            <li class="friend-li friend-li2">
+              <a href="list-104.html" target="_blank">更多</a>
+            </li>
+          </ul>
       </div>
     </div>
     <div class="foot-copy">
       <span class="foot-style">
         &copy; 2013-2018 52bjy.com 版权所有 ICP证：
-        <a href="#" target="_blank">浙ICP备14000186号-10</a>
+        <a href="javascript:;" target="_blank">浙ICP备14000186号-10</a>
       </span>
     </div>
   </div>
@@ -288,7 +288,10 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-
+/* 合作伙伴上下图片间隔 */
+.firstul{
+  margin-bottom:0.75rem;
+}
 /* ul li 的宽度和布局方式 */
 .friend-ul li {
   list-style: none;
