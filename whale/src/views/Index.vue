@@ -6,7 +6,7 @@
     <div id="intr">
       <div class="my_width">
         <div class="plan">
-          <h3>珍珠计划</h3>
+          <h3><a class=" pearl" herf="pearl.html">珍珠计划</a></h3>
           <p>在我们国内很多贫困山区还很落后，很多地方的孩子都没机会上学，对白鲸鱼而言，他们都是遗落的珍珠。</p>
         </div>
         <div class="plan" style="border-left:0">

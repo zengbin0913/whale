@@ -96,6 +96,12 @@
         </ul>
       </div>
     </div>
+    <div class="foot-copy">
+      <span class="foot-style">
+        &copy; 2013-2018 52bjy.com 版权所有 ICP证：
+        <a href="#" target="_blank">浙ICP备14000186号-10</a>
+      </span>
+    </div>
   </div>
 </template>
 <script>
@@ -310,5 +316,21 @@ export default {
   font-weight: bold;
   line-height: 6.625rem;
   color: #666666;
+}
+/* 以下是版权信息设置 */
+.foot-copy {
+  width: 100%;
+  background: #000;
+  text-align: center;
+  height: 4rem;
+  line-height: 4rem;
+}
+/* 版权信息 */
+.foot-copy .foot-style a {
+  color: #666666;
+}
+/* 版权信息 */
+.foot-copy span {
+  color: #d0d0d0 !important;
 }
 </style>
