@@ -125,32 +125,32 @@
           <li class="place"><p>所属地区<span>*</span></p>
             <div>
               <select id="province" @change="selpro" v-model="uprovince"><!--省-->
-                <option value="0">请选择</option>
-                <option value="1">北京市</option>
-                <option value="2">天津市</option>
-                <option value="3">上海市</option>
-                <option value="4">浙江省</option>
-                <option value="5">江苏省</option>
-                <option value="6">广东省</option>
-                <option value="7">福建省</option>
-                <option value="8">安徽省</option>
-                <option value="9">河北省</option>
-                <option value="10">山东省</option>
-                <option value="11">辽宁省</option>
-                <option value="12">黑龙江省</option>
-                <option value="13">四川省</option>
-                <option value="14">江西省</option>
-                <option value="15">陕西省</option>
-                <option value="16">重庆市</option>
-                <option value="17">湖北省</option>
-                <option value="18">河南省</option>
-                <option value="19">山西省</option>
-                <option value="20">湖南省</option>
-                <option value="21">云南省</option>
-                <option value="22">贵州省</option>
-                <option value="23">广西省</option>
-                <option value="24">海南省</option>
-                <option value="25">吉林省</option>
+                <option>请选择</option>
+                <option>北京市</option>
+                <option>天津市</option>
+                <option>上海市</option>
+                <option>浙江省</option>
+                <option>江苏省</option>
+                <option>广东省</option>
+                <option>福建省</option>
+                <option>安徽省</option>
+                <option>河北省</option>
+                <option>山东省</option>
+                <option>辽宁省</option>
+                <option>黑龙江省</option>
+                <option>四川省</option>
+                <option>江西省</option>
+                <option>陕西省</option>
+                <option>重庆市</option>
+                <option>湖北省</option>
+                <option>河南省</option>
+                <option>山西省</option>
+                <option>湖南省</option>
+                <option>云南省</option>
+                <option>贵州省</option>
+                <option>广西省</option>
+                <option>海南省</option>
+                <option>吉林省</option>
               </select>
               <select id="city" @change="selcity" v-model="ucity"><!--市-->
               </select>
@@ -288,32 +288,32 @@ export default {
     },
     selpro(e){
       var cities=[
-        [{"name":'北京市',"value":101}],
-        [{"name":'天津市',"value":201}],
-        [{"name":'上海市',"value":301}],
-        [{"name":'杭州市',"value":401}],
-        [{"name":'南京市',"value":501}],
-        [{"name":'广州市',"value":601},
-        {"name":'深圳市',"value":602},
-        {"name":'东莞市',"value":603},
-        {"name":'中山市',"value":604},
-        {"name":'江门市',"value":605},
-        {"name":'珠海市',"value":606},
-        {"name":'佛山市',"value":607},
-        {"name":'惠州市',"value":608},
-        {"name":'韶关市',"value":609},
-        {"name":'汕头市',"value":610},
-        {"name":'湛江市',"value":611},
-        {"name":'茂名市',"value":612},
-        {"name":'肇庆市',"value":613},
-        {"name":'梅州市',"value":614},
-        {"name":'汕尾市',"value":615},
-        {"name":'河源市',"value":616},
-        {"name":'阳江市',"value":617},
-        {"name":'清远市',"value":618},
-        {"name":'潮州市',"value":619},
-        {"name":'揭阳市',"value":620},
-        {"name":'云浮市',"value":621}]
+        [{"name":'北京市'}],
+        [{"name":'天津市'}],
+        [{"name":'上海市'}],
+        [{"name":'杭州市'}],
+        [{"name":'南京市'}],
+        [{"name":'广州市'},
+        {"name":'深圳市'},
+        {"name":'东莞市'},
+        {"name":'中山市'},
+        {"name":'江门市'},
+        {"name":'珠海市'},
+        {"name":'佛山市'},
+        {"name":'惠州市'},
+        {"name":'韶关市'},
+        {"name":'汕头市'},
+        {"name":'湛江市'},
+        {"name":'茂名市'},
+        {"name":'肇庆市'},
+        {"name":'梅州市'},
+        {"name":'汕尾市'},
+        {"name":'河源市'},
+        {"name":'阳江市'},
+        {"name":'清远市'},
+        {"name":'潮州市'},
+        {"name":'揭阳市'},
+        {"name":'云浮市'}]
       ];
       var i=e.target.selectedIndex;
       if(i>0){
@@ -327,17 +327,17 @@ export default {
     },
     selcity(e){
       var regions=[
-        [{"name":'越秀区',"value":60101},{"name":'荔湾区',"value":60101}], //广州
-        [{"name":'罗湖区',"value":60201}, //深圳
-        {"name":'福田区',"value":60202},
-        {"name":'南山区',"value":60203},
-        {"name":'宝安区',"value":60204},
-        {"name":'龙岗区',"value":60205},
-        {"name":'盐田区',"value":60206},
-        {"name":'龙华区',"value":60207},
-        {"name":'坪山区',"value":60208}],
-        [{"name":'东城街道',"value":60301},{"name":'南城街道',"value":60302}], //东莞
-        [{"name":'小榄镇',"value":60301},{"name":'黄圃镇',"value":60302}], //中山
+        [{"name":'越秀区'},{"name":'荔湾区'}], //广州
+        [{"name":'罗湖区'}, //深圳
+        {"name":'福田区'},
+        {"name":'南山区'},
+        {"name":'宝安区'},
+        {"name":'龙岗区'},
+        {"name":'盐田区'},
+        {"name":'龙华区'},
+        {"name":'坪山区'}],
+        [{"name":'东城街道'},{"name":'南城街道'}], //东莞
+        [{"name":'小榄镇'},{"name":'黄圃镇'}], //中山
       ];
       var i=e.target.selectedIndex;
       if(i>0){
@@ -350,6 +350,7 @@ export default {
       }
     },
     submit(){ //预约提交
+      this.udate=new Date(this.udate).getTime();
       if(this.uname!="" && this.uphone!="" && this.uregion!="" && this.uprovince!="" && this.ucity!="" && this.uaddress!="" && this.ukg!="" && this.udate!=""){
         this.axios.post("/user/appoint",qs.stringify({
           uname:this.uname,
@@ -367,7 +368,7 @@ export default {
           }).then(result=>{
             ordermsg.style.display="block";
             ordermsg.innerHTML=result.data.msg;
-        })
+        });
         /*一次预约成功后,界面清空*/
         this.uname="";
         this.uphone="";

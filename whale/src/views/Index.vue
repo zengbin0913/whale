@@ -1,20 +1,6 @@
 <template>
   <div>
     <carousel :list="list"></carousel>
-    <!--轮播图中有头部导航条,固定在顶端-->
-    <!-- 项目规划区域-->
-    <div id="intr">
-      <div class="my_width">
-        <div class="plan">
-          <h3><a class=" pearl" herf="pearl.html">珍珠计划</a></h3>
-          <p>在我们国内很多贫困山区还很落后，很多地方的孩子都没机会上学，对白鲸鱼而言，他们都是遗落的珍珠。</p>
-        </div>
-        <div class="plan" style="border-left:0">
-          <h3>蔚蓝计划</h3>
-          <p>明星的行为往往会影响一代人，白鲸鱼启动蔚蓝计划希望能够通过明星后援团的力量改变公益的方式。</p>
-        </div>
-      </div>
-    </div>
     <!-- 公益平台大区域 上-->
     <div class="co2">
       <div class="co2-h1">
@@ -22,33 +8,33 @@
         <p class="text-center">环保公益不是我们做了多少，而是所有人都做一点点</p>
       </div>
       <!-- 平台数据展示 下-->
-      <div class="bjyju d-flex">
+      <div class="bjyju">
         <div class="bjyju-item">
           <div class="bjyju-item-span">
             <h4 class="bjyju-item-h4">回收衣物</h4>
             <div class="span-text">
-              <span>1205147KG</span>
+              <span>{{numtext1}}KG</span>
             </div>
           </div>
           <div class="bjyju-item-span">
-            <h4 class="bjyju-item-h4">捐赠物资</h4>
+            <h4 class="bjyju-item-h4">回收书籍</h4>
             <div class="span-text">
-              <span>10122KG</span>
+              <span>{{numtext2}}KG</span>
             </div>
           </div>
           <div class="bjyju-item-span">
-            <h4 class="bjyju-item-h4">捐赠款项</h4>
+            <h4 class="bjyju-item-h4">回收鞋包</h4>
             <div class="span-text">
-              <span>62575万元</span>
+              <span>{{numtext3}}KG</span>
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- 底部切换现状背景和解决方案 -->
-    <div class="d-flex statu">
-      <div class="tab-nav-title">现状背景</div>
-      <div class="tab-nav-title">解决方案</div>
+    <div class="d-flex statu mt-1" @click="getsolve">
+      <div class="tab-nav-title" id="present">现状背景</div>
+      <div class="tab-nav-title" id="reply">解决方案</div>
     </div>
     <div class="d-flex d3">
       <div class="triangle">
@@ -59,27 +45,25 @@
       </div>
     </div>
     <!-- 现状背景主体内容区域-->
-    <div class="tab-box_div d-flex justify-content-between">
+    <div class="tab-box_div" id="presentContent">
       <div class="tab-box_div1">
         <!-- 左侧的3个div-->
-        <div class="tab-box-list">
-          <div class="tab-box-list-item">
+        <div class="tab-box-list" @click="getlist">
+          <div class="tab-box-list-item" id="list1">
             <p class="p1">资源极度浪费</p>
             <p class="p2">有效利用率不到10%</p>
           </div>
-          <div class="tab-box-list-item">
+          <div class="tab-box-list-item" id="list2">
             <p class="p1">产生远超需求</p>
             <p class="p2">单纯捐赠无法消化</p>
           </div>
-          <div class="tab-box-list-item">
+          <div class="tab-box-list-item" id="list3">
             <p class="p1">法律法规限时</p>
             <p class="p2">捐赠衣物要求严格</p>
           </div>
         </div>
-      </div>
-      <!-- 右侧的主体文字+img-->
-      <div class="tab-box_div2">
-        <div class="tbm-info">
+        <!-- 右侧的主体文字+img-->
+        <div class="tbm-info" id="list1Content">
           <p class="tbm-title">年产超过5000万吨，相当于2个大庆油田</p>
           <p
             class="tbm-txt"
@@ -87,6 +71,56 @@
           <div class="tab-info-imgs d-flex">
             <img src="../assets/img/xianzhuang1-1.jpg" />
             <img src="../assets/img/xianzhuang1-2.jpg" />
+          </div>
+        </div>
+        <div class="tbm-info hide" id="list2Content">
+          <p class="tbm-title">贫困地区的衣物需求正在减弱，需求呈现多样化</p>
+          <p
+            class="tbm-txt"
+          >而我们近5年的数据统计来看，需要大批量接受捐助的地方越来越少，基本都是短期小量，单纯的旧衣服以及无法解决山区的贫困问题，白鲸鱼励志从多个维度寻找平衡点。</p>
+          <div class="tab-info-imgs d-flex">
+            <img src="../assets/img/xianzhuang2-1.jpg" />
+            <img src="../assets/img/xianzhuang2-2.jpg" />
+          </div>
+        </div>
+        <div class="tbm-info hide" id="list3Content">
+          <p class="tbm-title">捐赠所需衣物要求严格，70%以上无法满足</p>
+          <p
+            class="tbm-txt"
+          >根据相关法律的规定,因考虑到卫生与安全问题,内衣裤或T恤等直接接触皮肤类旧衣服不能进行二次捐助，而此类衣物产生量超过60%，单纯捐助无法解决困局。</p>
+          <div class="tab-info-imgs d-flex">
+            <img src="../assets/img/xianzhuang3-1.jpg" />
+            <img src="../assets/img/xianzhuang3-2.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-box_div hide" id="replyContent">
+      <div class="tab-box_div1">
+        <!-- 左侧的3个div-->
+        <div class="tab-box-list">
+          <div class="tab-box-list-item">
+            <p class="p1">再生加工处理</p>
+            <p class="p2">50%以上的品种可以加工利用</p>
+          </div>
+          <div class="tab-box-list-item">
+            <p class="p1">公益捐赠山区</p>
+            <p class="p2">很多地方还很贫困</p>
+          </div>
+          <div class="tab-box-list-item">
+            <p class="p1">出口第三世界</p>
+            <p class="p2">战乱和落后国家同样需要</p>
+          </div>
+        </div>
+        <!-- 右侧的主体文字+img-->
+        <div class="tbm-info">
+          <p class="tbm-title">大部分的纺织品都可以被再生加工，发挥二次价值</p>
+          <p
+            class="tbm-txt"
+          >一些脏、破、烂等不能被捐赠或者无法满足出口需求的衣物，通常我们会将它们纤维化或者开花成再生棉，用于制作农业大棚被，毛绒玩具填充物和地毯原材料，包括一些工业隔音棉材料等</p>
+          <div class="tab-info-imgs d-flex">
+            <img src="../assets/img/fangan1-1.jpg" />
+            <img src="../assets/img/fangan1-2.jpg" />
           </div>
         </div>
       </div>
@@ -105,7 +139,7 @@
           </div>
           <div class="news-second">
             <a href="javascript:;">
-              <img src="../assets/img/01482874226381.jpg"/>
+              <img src="../assets/img/01482874226381.jpg" />
             </a>
             <a href="javascript:;" class="news-name">白鲸鱼重聚青海玉树藏族自治州捐赠旧衣服</a>
           </div>
@@ -119,19 +153,19 @@
         <div class="news-first mt-4">
           <div class="news-second">
             <a href="javascript:;">
-              <img src="../assets/img/191658741.jpg"/>
+              <img src="../assets/img/191658741.jpg" />
             </a>
             <a href="javascript:;" class="news-name">四川苟哇村一松寨当地小学活动反馈</a>
           </div>
           <div class="news-second">
             <a href="javascript:;">
-              <img src="../assets/img/023439201.jpg"/>
+              <img src="../assets/img/023439201.jpg" />
             </a>
             <a href="javascript:;" class="news-name">旧衣服捐赠之四川攀枝花贫困区反馈</a>
           </div>
           <div class="news-second">
             <a href="javascript:;">
-              <img src="../assets/img/1608261718003.png"/>
+              <img src="../assets/img/1608261718003.png" />
             </a>
             <a href="javascript:;" class="news-name">旧衣公益新疆阿克苏白鲸鱼留下爱的足迹</a>
           </div>
@@ -146,17 +180,19 @@
       <div class="map_title">
         <h1 class="map_title_h1">无处不在的身影</h1>
         <p>国内大部分地区都有白鲸鱼的身影</p>
-        <div class="show_map">
-          <div>
-            <span class="kt_city"></span>
-            <span>开通城市</span>
-          </div>
-          <div>
-            <span class="help_city"></span>
-            <span>帮助城市</span>
-          </div>
+      </div>
+      <!--显示map上的不同颜色转态点  -->
+      <div class="show_map">
+        <div class="show_map1 a_red">
+          <div class="kt_city pluse3"></div>
+          <span>开通城市</span>
+        </div>
+        <div class="show_map2">
+          <div class="help_city pluse4"></div>
+          <span>帮助城市</span>
         </div>
       </div>
+      <!--map上各省份的文字和定位点  -->
       <div class="map_ser">
         <div class="a1">
           <div class="pluse"></div>
@@ -308,7 +344,7 @@
             <img src="../assets/img/173623131.jpg" alt="新华爱心公益基金会" />
           </li>
           <li class="friend-li friend-li2">
-            <router-link to="/corporation" >更多</router-link>
+            <router-link to="/corporation">更多</router-link>
           </li>
         </ul>
       </div>
@@ -333,73 +369,90 @@ import carousel from "../components/Carousel.vue";
 export default {
   data() {
     return {
-      list: [] //轮播图信息,父组件给子组件传值
+      list: [], //轮播图信息,父组件给子组件传值
+      numtext1: 1205147,
+      numtext2: 10122,
+      numtext3: 62575
     };
   },
   components: { carousel },
+  methods: {
+    getnum() {
+      var text1 = 1205900;
+      var text2 = 10875;
+      var text3 = 63328;
+      var timer = setInterval(() => {
+        if (
+          this.numtext1 < text1 ||
+          this.numtext2 < text2 ||
+          this.numtext3 < text3
+        ) {
+          this.numtext1++;
+          this.numtext2++;
+          this.numtext3++;
+        } else {
+          clearInterval(timer);
+        }
+      }, 1);
+    },
+    getsolve(e) {
+      var tabs = document.querySelectorAll(".tab-nav-title");
+      var divs = document.querySelectorAll(".tab-box_div");
+      var targetid = e.target.id;
+      for (var div of divs) {
+        //内容显示
+        if (div.id.indexOf(targetid) != -1) div.style.display = "block";
+        else div.style.display = "none";
+      }
+      for (var tab of tabs) {
+        //导航样式
+        if (tab == e.target) {
+          tab.style.borderTop = "0.125rem solid #ff6375";
+          tab.style.color = "#ff6375";
+        } else {
+          tab.style.borderTop = "0.125rem solid #ddd";
+          tab.style.color = "#ddd";
+        }
+      }
+    },
+    getlist(e) {
+      var tabs = document.querySelectorAll(".tab-box-list-item");
+      var divs = document.querySelectorAll(".tbm-info");
+      var targetid = e.target.id || e.target.parentElement.id;
+      for (var div of divs) {
+        //内容显示
+        if (div.id.indexOf(targetid) != -1) div.style.display = "block";
+        else div.style.display = "none";
+      }
+      for (var tab of tabs) {
+        //导航样式
+        if (tab == e.target || tab == e.target.parentElement) {
+          tab.style.backgroundColor = "#ff6375";
+        } else {
+          tab.style.backgroundColor = "#ddd";
+        }
+      }
+    }
+  },
   created() {
     this.axios.get("/index/carousel").then(result => {
       this.list = result.data;
     });
+    this.getnum();
   }
 };
 </script>
 <style scoped>
-/* <!-- 平台项目计划--> */
-#intr {
-  width: 100%;
-  height: 7.5rem;
-  background: #666666;
-  color: #ffffff;
-  box-sizing: border-box;
-}
-/*内容区域公共宽度1200px*/
-.my_width,
-.co2-h1,
-.co2-h1 h1,
-.bjyju-item {
-  width: 75rem;
-}
-/*内容区域文字居中显示*/
-.my_width .plan,
-#intr .my_width h3,
-.co2,
-.co2-h1 h1,
-.bjyju-item,
-.bjyju-item-h4,
-.span-text span {
-  text-align: center;
-}
-.my_width,
-.bjyju-item {
-  margin: 0 auto;
-}
-.my_width {
-  display: flex;
-}
-/* 计划内容 */
-.my_width .plan {
-  width: 37.5rem;
-  height: 7.5rem;
-  border-left: 0.0625rem solid #ffffff;
-  border-right: 0.0625rem solid #ffffff;
-}
-#intr .my_width h3 {
-  font-size: 1.5rem;
-  margin: 0.625rem 0;
-}
-#intr .plan p {
-  padding: 0 1.875rem;
-  font-size: 1rem;
-}
 /* <!-- 公益平台大区域平台数据展示--> */
 .co2 {
   width: 100%;
 }
 .co2-h1 {
-  margin: 1.25rem auto;
+  width: 100%;
+  margin-top: 1.5rem;
 }
 .co2-h1 h1 {
+  text-align: center;
   font-size: 2rem;
   height: 2.125rem;
   color: #f17c81;
@@ -410,21 +463,30 @@ export default {
   height: 1.3125rem;
   margin-top: 0.8rem;
 }
-.bjyju-item {
+.bjyju {
+  width: 100%;
   display: flex;
+  margin-top: 1.5rem;
+}
+.bjyju-item {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 .bjyju-item span {
-  width: 25rem;
+  width: 100%;
   height: 2.5rem;
 }
 .bjyju-item-h4 {
-  width: 25rem;
+  width: 100%;
   font-size: 1.375rem;
   color: #fe7e90;
   margin-bottom: 0.625rem;
+  text-align: center;
 }
 .span-text {
-  width: 25rem;
+  width: 100%;
   text-align: center; /*边框居中显示*/
 }
 .span-text span {
@@ -439,6 +501,9 @@ export default {
   display: inline-block;
 }
 /* <!-- 底部切换现状背景和解决方案--> */
+.statu:hover {
+  cursor: pointer;
+}
 .statu,
 .d3 {
   width: 75rem;
@@ -452,7 +517,7 @@ export default {
   margin: 0 auto;
 }
 .statu .tab-nav-title {
-  color: #ff6375;
+  color: #ddd;
   width: 37.5rem;
   height: 2.5625rem;
   padding: 0.625rem 0 0;
@@ -461,8 +526,9 @@ export default {
   border-top: 0.125rem solid #ddd;
   margin-top: 2rem;
 }
-.statu :first-child {
-  border-top: 0.125rem solid #ff6375 !important;
+.statu .tab-nav-title:first-child {
+  border-top: 0.125rem solid #ff6375;
+  color: #ff6375;
 }
 .triangle {
   width: 37.5rem;
@@ -480,12 +546,19 @@ export default {
   margin-top: 1.25rem;
   margin-bottom: 2rem;
 }
+.tab-box_div1 {
+  display: flex;
+}
 .tab-box-list {
-  width: 16.875rem;
+  width: 16rem;
   height: 17.4375rem;
 }
+.tbm-info {
+  width: 58rem;
+  padding-left: 1rem;
+}
 .tab-box-list-item {
-  width: 16.875rem;
+  width: 100%;
   padding: 0.625rem 0;
   margin-bottom: 1.25rem;
   color: #ffffff;
@@ -507,10 +580,6 @@ export default {
   font-size: 0.875rem;
   margin-bottom: 0;
   text-align: center;
-}
-.tab-box_div2 .tbm-info {
-  width: 55rem;
-  height: 17.4375rem;
 }
 .tbm-title {
   font-size: 1.375rem;
@@ -626,12 +695,14 @@ export default {
 *::after {
   box-sizing: content-box !important;
 }
-/* <!--国内地图----白鲸鱼的身影  --> */
+/************** <!--国内地图----白鲸鱼的身影  -->************* */
 .Chinamap {
   width: 100%;
-  height: 46.875rem;
+  height: 47rem;
   overflow: hidden;
+  position: relative;
 }
+/*父级div*/
 .map_title {
   width: 75rem;
   text-align: center;
@@ -639,35 +710,59 @@ export default {
   font-weight: 100;
   padding: 2.5rem 0 0;
 }
+/*地图的文字标题*/
 .map_title_h1 {
   width: 75rem;
   text-align: center;
   font-weight: 100;
-  font-size: 1.5rem;
+  display: block;
+  font-size: 2em;
 }
+
+/**标题下的文字段落 */
 .map_title p {
   font-size: 0.875rem;
   width: 75rem;
   text-align: center;
   margin-top: 0.5rem;
+  display: block;
+  margin-inline-end: 1rem;
 }
-.show_map {
-  display: flex;
-  width: 75rem;
-  margin: 0 auto;
-}
+/* 开通城市的定位点*/
 .kt_city {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background: red;
+  top: 23%;
+  left: 43%;
 }
+/* 开通城市的定位点 右侧的文字*/
+.show_map1 span {
+  position: absolute;
+  color: #000;
+  font-size: 16px;
+  left: 45%;
+  top: 22.6%;
+}
+/* 帮助区域的定位点*/
 .help_city {
-  background: blue;
-  width: 10px;
-  height: 10px;
+  background: #00f;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+  left: 52%;
+  top: 23%;
 }
+/* 帮助区域的定位点 右侧的文字*/
+.show_map2 span {
+  position: absolute;
+  color: #000;
+  font-size: 16px;
+  left: 54%;
+  top: 22.6%;
+}
+/*map上各省份的文字和定位点  */
 .map_ser {
   width: 46.875rem;
   height: 38.75rem;
@@ -681,9 +776,7 @@ span {
   color: #000000;
 }
 /*******************公共样式 所有省份绝对定位******************** */
-/*.a1,.a2,.a3,.a4,.a5,.a6,.a7,.a8,.a9,.a10,.a11,.a12,.a13,.a14,.a15,.a16,.a17,.a18,.a19,.a20,.a21,.a22,.a23,.a24,.a25,.a26,.a27,.a28{
-  position:absolute;
-}*/
+
 .map_ser > div {
   position: absolute;
 }
@@ -800,43 +893,79 @@ span {
   left: 125rem;
 }
 
-/******** 开通城市在地图中显示红色 *************/
-.pluse {
+/************pluse点的公共样式 *************/
+.pluse,
+.pluse1,
+.pluse3,
+.pluse4 {
   width: 1rem;
   height: 1rem;
-  background: red;
-  position: relative;
   border-radius: 50%;
   animation: mymove 1s infinite;
   -webkit-animation: mymove 5s infinite; /*Safari and Chrome*/
 }
+/************开通城市在地图中显示红色 *************/
+.pluse {
+  background: red;
+  position: relative;
+}
+/*动画展示原点的扩大和消散*/
 @keyframes mymove {
   0% {
     transform: scale(0);
     opacity: 1;
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1.7);
     opacity: 0;
   }
 }
 /**************** 需要帮助区域地图中显示蓝色 *************/
 .pluse1 {
-  width: 1rem;
-  height: 1rem;
   background: #00f;
   position: relative;
-  border-radius: 50%;
-  animation: mymove 1s infinite;
-  -webkit-animation: mymove 5s infinite; /*Safari and Chrome*/
 }
+/*动画展示原点的扩大和消散*/
 @keyframes mymove {
   0% {
     transform: scale(0);
     opacity: 1;
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/**************** 开通城市地图中显示红色 *************/
+.pluse3 {
+  background: #f00;
+  position: absolute;
+}
+/*动画展示原点的扩大和消散*/
+@keyframes mymove {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+/**************** 开通城市地图中显示蓝色 *************/
+.pluse4 {
+  background: #00f;
+  position: absolute;
+}
+/*动画展示原点的扩大和消散*/
+@keyframes mymove {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.7);
     opacity: 0;
   }
 }

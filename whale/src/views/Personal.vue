@@ -184,7 +184,7 @@
                 <td></td>
                 <td style="text-align:center;">
                   <button @click="updateupwd" class="save">保存</button>
-                  <button @click="cancel">返回</button>
+                  <button @click="cancels">返回</button>
                 </td>
                 <td></td>
               </tr>
@@ -223,9 +223,9 @@
                 <span class="active">管理头像</span>
               </h1> 
               <div class="avart-detail" style="display:flex;">
-                <img src="../assets/img/default.jpg">
+                <img :src="'http://127.0.0.1:3000/'+list.img">
                 <div>
-                  <input type="file" name="file" >
+                  <input type="file" id="file" @change="changeImg" accept="image/*" >
                 </div>
               </div>
             </div>
@@ -319,12 +319,12 @@
               <tbody id="ordercontent">
                 <tr v-for="(item,i) of order" :key="i">
                   <td>{{item.fname}}</td>
-                  <td>{{item.kg}}</td>
-                  <td>{{item.deliver_time}}</td>
+                  <td>{{item.kg==1?"5到10kg":item.kg==2?"10到20kg":item.kg==3?"21到30kg":"30kg以上"}}</td>
+                  <td>{{item.deliver_time?new Date(item.deliver_time).toLocaleString():""}}</td>
                   <td>{{item.express}}</td>
                   <td>{{item.oaddress}}</td>
                   <td>{{item.status}}</td>
-                  <td>{{new Date(item.success_time).toLocaleString()}}</td>
+                  <td>{{item.success_time?new Date(item.success_time).toLocaleString():""}}</td>
                 </tr>
               </tbody>
             </table>
@@ -398,7 +398,7 @@ export default {
       upwd:"",  //旧密码
       newupwd:"",  //新密码
       reupwd:"",  //二次输入新密码
-      num:0 //可以更新密码的条件
+      num:0, //可以更新密码的条件
     };
   },
   methods: {
@@ -472,7 +472,16 @@ export default {
     load5(){//捐赠订单信息
        this.axios.get("/user/order").then(result=>{  
         if(result.data=="") ordercontent.innerHTML="暂无订单记录";
-        else this.order=result.data;
+        else {
+          for(var i=0;i<result.data.length;i++){
+            if(result.data[i].status==1) result.data[i].status="等待处理";
+            else if(result.data[i].status==2) result.data[i].status="运输中";
+            else if(result.data[i].status==3) result.data[i].status="回收成功";
+            else if(result.data[i].status==2) result.data[i].status="已取消";
+          }
+          console.log(result.data);
+          this.order=result.data;
+        }
       })
     },
     load(){//加载个人信息
@@ -622,7 +631,6 @@ export default {
         emulateJSON: true
       },{headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
       }).then(result=>{
-        alert(`${result.data.msg}`);
         this.load();
       })
     },
@@ -631,8 +639,19 @@ export default {
        e.target.parentElement.parentElement.previousElementSibling.children[2].innerHTML="";
        e.target.parentElement.parentElement.previousElementSibling.children[2].style.backgroundColor="#fff";
     },
+    cancels(){
+      var tds=document.querySelectorAll("#upwd tr td:last-child");
+      console.log(tds);
+      for(var td of tds) td.innerHTML="";
+    },
     style(e){ //聚焦样式
       e.target.parentElement.nextElementSibling.style.color="skyblue";
+    },
+    changeImg(){//修改图片
+      var eleFile = document.querySelector('#file');
+      var file = eleFile.files[0];
+      var img=file.name;
+      this.updateinfo("/user/img",img);
     }
   },
   created(){
@@ -813,14 +832,20 @@ span.active {
   font-size: 0.75rem;
   margin-top: 1rem;
 }
+#avart-content{
+  width: 8rem;
+  height: 8rem;;
+}
 #onecontent table td,
 #twocontent table td {
-  background: #f7f7f7;
   width: 14rem;
   height: 2rem;
   text-align: right;
   padding-right: 1.875rem;
   font-size: 0.875rem;
+}
+#twocontent table tr td:nth-child(2){
+  width: 12rem;
 }
 #twocontent #upwd td{
   padding-right: 0.5rem;
@@ -850,6 +875,9 @@ span.active {
   border: 1px solid #ddd;
   padding: 0.25rem;
   cursor: pointer;
+}
+.item+.item{
+  border-top: 0;
 }
 .item > img {
   width: 7.5rem;
@@ -894,6 +922,10 @@ span.active {
 #nichen button.update,#email button.update,#phone button.update {
   background: #1aad19;
   color: #fff;
+}
+.avart-detail img{
+  width: 8rem;
+  height: 8rem;
 }
 .avart-detail div{
   width: 8rem;

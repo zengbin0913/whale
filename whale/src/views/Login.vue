@@ -7,18 +7,18 @@
       <div class="loginbjy">
         <h2>账号登录</h2>
         <div class="d1">
-          <input type="text" class="input-uname" placeholder="请输入用户名/Email" v-model="uname">
+          <input type="text" class="input-uname" placeholder="请输入用户名/Email" v-model="uname" id="uname">
         </div>
         <div class="d1">
-          <input type="password" class="input-password" placeholder="请输入密码" v-model="upwd">
+          <input type="password" class="input-password" placeholder="请输入密码" v-model="upwd" id="upwd">
         </div>
         <div class="d1">
-          <button @click="login">登录</button>
+          <button @click="login" class="submit">登录</button>
         </div>
         <div style="margin:0px 10px">
           <router-link to="/reg">会员注册</router-link>
           <span>|</span>
-          <a href="javascript:;">记住密码</a>
+          <label><input id="remember" type="checkbox" @change="changestatus">记住密码</label>
         </div>
       </div>
     </div>
@@ -35,25 +35,61 @@ export default {
   },
   methods:{
     login(){
-    var uname=this.uname;
-    var upwd=this.upwd;
-    this.axios.post("/user/login",qs.stringify({
-      uname:uname,
-      upwd:upwd
-    }),{
-      emulateJSON: true
-    },{
-      headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
-    }).then(result=>{
-      if(result.data.code==200) {
-        this.$router.push("/personal");
+      var uname=this.uname;
+      var upwd=this.upwd;
+      this.axios.post("/user/login",qs.stringify({
+        uname:uname,
+        upwd:upwd
+      }),{emulateJSON: true},{
+        headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
+      }).then(result=>{
+        if(result.data.code==200) {
+          this.$router.push("/personal");
+          if(remember.checked){ 
+            this.setCookie('uname',this.uname,7); //保存帐号到cookie，有效期7天
+            this.setCookie('upwd',this.upwd,7); //保存密码到cookie，有效期7天
+          }
+        }
+        else {
+          msg.style.display="block";
+          msg.innerHTML=result.data.msg;
+        }
+      });
+    },
+    load(){
+      //页面初始化时，如果帐号密码cookie存在则填充
+      if(this.getCookie('uname') && this.getCookie('upwd')){
+        this.uname = this.getCookie('uname');
+        this.upwd = this.getCookie('upwd');
+        remember.checked = true;
       }
-      else {
-        msg.style.display="block";
-        msg.innerHTML=result.data.msg;
+    },
+    setCookie(name,value,day){ //设置cookie
+        var date = new Date();
+        date.setDate(date.getDate() + day);
+        document.cookie = name + '=' + value + ';expires='+ date;
+    },
+    getCookie(name){ //获得cookie
+        var reg = RegExp(name+'=([^;]+)');
+        var arr = document.cookie.match(reg);
+        if(arr){
+          return arr[1];
+        }else{
+          return '';
+        }
+    },
+    changestatus(){//复选框勾选状态发生改变时，如果未勾选则清除cookie
+      if(!this.checked){
+        this.delCookie('uname');
+        this.delCookie('upwd');
       }
-    })
-  }
+    },
+    delCookie(name){ //删除cookie
+      this.setCookie(name,null,-1);
+    }
+  },
+  mounted(){
+    this.load();
   }
 };
 </script>
@@ -123,7 +159,7 @@ export default {
 .input-password{
   background:url("../assets/img/input-password.png") no-repeat 0.25rem;
 }
-input {
+.d1 input {
   width: 20rem;
   height: 1.875rem;
   padding-left: 1.5rem;
@@ -133,7 +169,7 @@ input {
   border-radius: 0.25rem;
   border:2px solid #ccc;
 }
-button {
+button.submit {
   width: 20rem;
   height: 2.5rem;
   background: #0569d5;
@@ -146,5 +182,16 @@ button {
 a {
   color: #225588;
   margin: 0 0.625rem;
+}
+label{
+  font-size:0.75rem;
+  margin:0;
+  height:1.125rem;
+  line-height: 1.25rem;
+  margin-right:1rem;
+}
+#remember{
+  margin-left:10px;
+  margin-right:5px
 }
 </style>>

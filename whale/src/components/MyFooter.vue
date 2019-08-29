@@ -53,7 +53,7 @@
     <div class="foot-copy">
       <span class="foot-style">
         &copy; 2013-2018 52bjy.com 版权所有 ICP证：
-        <a href="#" target="_blank">浙ICP备14000186号-10</a>
+        <a href="javascript:;" target="_blank">浙ICP备14000186号-10</a>
       </span>
     </div>
   </div>
