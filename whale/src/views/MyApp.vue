@@ -211,7 +211,14 @@ export default {
   margin-top:0.625rem;
   transition: all 0.6s;
 }
+.app_itr1_r img {
+  margin-top:0.625rem;
+  transition: all 0.6s;
+}
 .app_itr_box img:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+.app_itr1_r img:hover {
   transform: scale3d(1.1, 1.1, 1.1);
 }
 .app_itr_r,.app_itr1_box {
