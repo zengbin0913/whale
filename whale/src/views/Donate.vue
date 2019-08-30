@@ -4,7 +4,7 @@
   <div class="main">
     <div class="mian-l">
       <div class="mian-l-banner">
-        <img src="../assets/img/head-l.jpg"  />
+        <video src="../assets/video.mp4" controls></video>
       </div>
       <div class="mian-l-list">
         <ul>
@@ -14,7 +14,7 @@
             </div>
             <div class="list-li-data">
               <div class="list-li-title">
-                <a href="javascript:;">{{item.title}}</a>
+                <a :href="item.href">{{item.title}}</a>
               </div>
               <div class="list-li-more">
                 <img
@@ -169,9 +169,10 @@ export default {
 .mian-l {
   width: 50rem;
 }
-.mian-l-banner img {
+.mian-l-banner video {
   width:  50rem;
   height: 18.75rem;
+  object-fit: fill;
 }
 .list-li {
   display: flex;
@@ -242,14 +243,14 @@ export default {
 }
 .mian-r-num1 {
   margin-left: 8.125rem;
-  font-size: 1.125rem;
+  font-size: 2rem;
   color: #aaa;
-  margin-bottom: 5px;
+  margin-bottom: 1rem;
 }
 .mian-r-num2 {
   margin-left: 8.125rem;
-  font-size: 1.875rem;
-  margin-bottom: 0.625rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
   color: #aaa;
 }
 #num3,
