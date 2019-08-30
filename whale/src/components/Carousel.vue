@@ -24,6 +24,21 @@
         <li data-target="#demo" data-slide-to="2"></li>
       </ul>
     </div>
+    <!-- 项目规划区域-->
+    <div id="intr">
+      <div class="my_width">
+        <div class="plan">
+          <a class=" pearl" href="https://www.52bjy.com/about/zhenzhu.html" style="color:#fff">
+          <h3>珍珠计划</h3>
+          <p>在我们国内很多贫困山区还很落后，很多地方的孩子都没机会上学，对白鲸鱼而言，他们都是遗落的珍珠。</p>
+          </a>
+        </div>
+        <div class="plan" style="border-left:0">
+          <h3>蔚蓝计划</h3>
+          <p>明星的行为往往会影响一代人，白鲸鱼启动蔚蓝计划希望能够通过明星后援团的力量改变公益的方式。</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -58,10 +73,60 @@ export default {
 <style scoped>
 .main{
   width: 100%;
-  height: 27.5rem;
+  height: 37.5rem;
+  position:relative;
 }
 .carousel{
-  height: 27.5rem;
+  height: 37.5rem;
+}
+#intr {
+  width: 100%;
+  height: 7.5rem;
+  background: rgba(255,255,255,0.3);
+  color: #ffffff;
+  box-sizing: border-box;
+  position:absolute;
+  left:0;bottom:0;
+  
+}
+/*内容区域公共宽度1200px*/
+.my_width,
+.co2-h1,
+.co2-h1 h1,
+.bjyju-item {
+width: 75rem;
+}
+/*内容区域文字居中显示*/
+.my_width .plan,
+#intr .my_width h3,
+.co2,
+.co2-h1 h1,
+.bjyju-item,
+.bjyju-item-h4,
+.span-text span {
+  text-align: center;
+}
+.my_width,
+.bjyju-item {
+  margin: 0 auto;
+}
+.my_width {
+  display: flex;
+}
+/* 计划内容 */
+.my_width .plan {
+  width: 37.5rem;
+  height: 7.5rem;
+  border-left: 0.0625rem solid #ffffff;
+  border-right: 0.0625rem solid #ffffff;
+}
+#intr .my_width h3 {
+  font-size: 1.5rem;
+  margin: 0.625rem 0;
+}
+#intr .plan p {
+  padding: 0 1.875rem;
+  font-size: 1rem;
 }
 .carousel-inner,.carousel-item{
   height:100%;
@@ -69,7 +134,7 @@ export default {
 /* 轮播图区域 */
 .carousel-indicators {
   display:fixed;
-  bottom:1.875rem; left:0;
+  bottom:11.875rem; left:0;
   height: 4rem;
   display: flex;
   padding-left: 0;

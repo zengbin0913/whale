@@ -12,6 +12,7 @@
           </li>
         </ul>
       </div>
+      <div class="text-center text-danger mt-1 hide" id="requ">所有带*的为必填项</div>
       <div class="reg-main">
         <div class="reg-content">
           <div class="types">
@@ -109,6 +110,10 @@
           <div class="reg-msg" id="dec"></div>
           <button class="reg-login" @click="ends">立即登录</button>
       </div>
+    </div>
+    <div class="hide" id="msg2info">
+      <span @click="closeinfo">×</span>
+      <span id="msg2content"></span>
     </div>
     <my-footer></my-footer>
   </div>
@@ -377,7 +382,10 @@ export default {
            headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
         }).then(result=>{
           console.log(result);
-          if(result.data.code==-1) alert(`${result.data.msg}`);
+          if(result.data.code==-1) {
+            msg2content.innerHTML=result.data.msg;
+            msg2info.style.display="block";
+          }
           else{
             var reg_main=e.target.parentElement.parentElement;
             var reg_success=e.target.parentElement.parentElement.nextElementSibling;
@@ -406,7 +414,10 @@ export default {
         }),{emulateJSON: true},{
            headers:{"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",}
         }).then(result=>{
-          if(result.data.code==-1) alert(`${result.data.msg}`);
+          if(result.data.code==-1) {
+            msg2content.innerHTML=result.data.msg;
+            msg2info.style.display="block";
+          }
           else{
             var reg_main=e.target.parentElement.parentElement;
             var reg_success=e.target.parentElement.parentElement.nextElementSibling;
@@ -423,12 +434,17 @@ export default {
             },1000);
           }
         })
+      }else{
+        requ.style.display="block";
       }
     },
     ends(){ //手动干预进入登录页面
       clearInterval(this.timer);
       this.$router.push("/login");
     },
+    closeinfo(){
+      msg2info.style.display="none";
+    }
   },
   computed: {
   },
@@ -438,6 +454,37 @@ export default {
 };
 </script>
 <style scoped>
+#msg2info{
+  position:fixed;
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  margin:auto;
+  background-color:rgba(0, 0, 0, 0.3);
+}
+#msg2info span:first-child{
+  position:absolute;
+  width: 2rem;
+  height: 2rem;
+  top:0;
+  left:8rem;
+  color:#333;
+  font-size:2rem;
+  cursor: pointer;
+}
+#msg2info #msg2content{
+  width: 10rem;
+  height: 8rem;
+  line-height: 6rem;
+  position:absolute;
+  color:#fff;
+  left:0;
+  top:2rem;
+}
 .main{
   width: 100%;
   padding-top:3.75rem;
@@ -445,7 +492,7 @@ export default {
 .reg-title,
 .reg-main {
   width: 100%;
-  margin-top: 3.75rem;
+  margin-top: 1.75rem;
 }
 .reg-title .reg-progress {
   width: 43.75rem;

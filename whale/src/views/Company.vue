@@ -53,53 +53,76 @@
         <div class="subtitle">轻松工艺 简单环保</div>
       </div>
       <div class="md-main">
-        <img src="../assets/img/Comp.png" alt />
+        <div class="md-arc" style="margin-right:150px;">
+          <canvas id="myCanvas1" height="300" width="300"></canvas>
+          <div class="md-arcm">
+            <div class="md-arcm1">400000+</div>
+            <div class="md-arcm2">注册用户</div>
+          </div>
+        </div>
+        <div class="md-arc" style="margin-right:150px;">
+          <canvas id="myCanvas2" height="300" width="300"></canvas>
+          <div class="md-arcm">
+            <div class="md-arcm1">25000+</div>
+            <div class="md-arcm2">每日活跃用户</div>
+          </div>
+        </div>
+        <div class="md-arc">
+          <canvas id="myCanvas3" height="300" width="300"></canvas>
+          <div class="md-arcm">
+            <div class="md-arcm1">95%</div>
+            <div class="md-arcm2">城市覆盖率</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="friend">
       <div class="friend-box">
-          <div class="friend-title">合作伙伴与媒体</div>
-          <div class="friend-txt">Partners and media</div>
-          <ul class="friend-ul firstul">
-            <li class="friend-li">
-              <img src="../assets/img/023615601.jpg" alt="芝麻信用" />
-            </li>
-            <li class="friend-li">
-              <img src="../assets/img/173047781.jpg" alt="新华爱心公益基金会" />
-            </li>
-            <li class="friend-li">
-              <img src="../assets/img/171620491.jpg" alt="德邦快递" />
-            </li>
-            <li class="friend-li">
-              <img src="../assets/img/171050161.jpg" alt="北京交通大学" />
-            </li>
-            <li class="friend-li" style="margin-right:0;">
-              <img src="../assets/img/170751961.jpg" alt="火彩爱心公益" />
-            </li>
-          </ul>
-          <ul class="friend-ul">
-            <li class="friend-li">
-              <img src="../assets/img/170342371.jpg" alt="新瑞公益" />
-            </li>
-            <li class="friend-li">
-              <img src="../assets/img/165000411.jpg" alt="尚德机构" />
-            </li>
-            <li class="friend-li">
-              <img src="../assets/img/163921621.jpg" alt="闪回收" />
-            </li>
-            <li class="friend-li">
-              <img src="../assets/img/164847231.jpg" alt="有闲有品" />
-            </li>
-            <li class="friend-li friend-li2">
-              <a href="list-104.html" target="_blank">更多</a>
-            </li>
-          </ul>
+        <div class="friend-title">合作伙伴与媒体</div>
+        <div class="friend-txt">Partners and media</div>
+        <ul class="friend-ul firstul">
+          <li class="friend-li">
+            <img src="../assets/img/023615601.jpg" alt="芝麻信用" />
+          </li>
+          <li class="friend-li">
+            <img src="../assets/img/173047781.jpg" alt="新华爱心公益基金会" />
+          </li>
+          <li class="friend-li">
+            <img src="../assets/img/171620491.jpg" alt="德邦快递" />
+          </li>
+          <li class="friend-li">
+            <img src="../assets/img/171050161.jpg" alt="北京交通大学" />
+          </li>
+          <li class="friend-li" style="margin-right:0;">
+            <img src="../assets/img/170751961.jpg" alt="火彩爱心公益" />
+          </li>
+        </ul>
+        <ul class="friend-ul">
+          <li class="friend-li">
+            <img src="../assets/img/170342371.jpg" alt="新瑞公益" />
+          </li>
+          <li class="friend-li">
+            <img src="../assets/img/165000411.jpg" alt="尚德机构" />
+          </li>
+          <li class="friend-li">
+            <img src="../assets/img/163921621.jpg" alt="闪回收" />
+          </li>
+          <li class="friend-li">
+            <img src="../assets/img/164847231.jpg" alt="有闲有品" />
+          </li>
+          <li class="friend-li friend-li2">
+            <a href="list-104.html" target="_blank">更多</a>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="foot-copy">
       <span class="foot-style">
         &copy; 2013-2018 52bjy.com 版权所有 ICP证：
-        <a href="javascript:;" target="_blank">浙ICP备14000186号-10</a>
+        <a
+          href="javascript:;"
+          target="_blank"
+        >浙ICP备14000186号-10</a>
       </span>
     </div>
   </div>
@@ -113,65 +136,67 @@ export default {
     };
   },
   methods: {
-    /*
-    handle(e){
-       e.target.style.borderBottom="0.25rem solid #ff6375";
-       e.target.style.color="#ff6375";
-      if(e.target.id=="tab1Title"){
-        tab1.style.display="block";
-        tab2.style.display="none";
-        tab3.style.display="none";
-        tab2Title.style.borderBottom="0.25rem solid #bde1ff";
-        tab3Title.style.borderBottom="0.25rem solid #bde1ff";
-        tab2Title.style.color="#4b91cf";
-        tab3Title.style.color="#4b91cf";
-      }
-      if(e.target.id=="tab2Title"){
-        tab2.style.display="block";
-        tab1.style.display="none";
-        tab3.style.display="none";
-        tab1Title.style.borderBottom="0.25rem solid #bde1ff";
-        tab3Title.style.borderBottom="0.25rem solid #bde1ff";
-        tab1Title.style.color="#4b91cf";
-        tab3Title.style.color="#4b91cf";
-      }
-      if(e.target.id=="tab3Title"){
-        tab3.style.display="block";
-        tab1.style.display="none";
-        tab2.style.display="none";
-        tab1Title.style.borderBottom="0.25rem solid #bde1ff";
-        tab2Title.style.borderBottom="0.25rem solid #bde1ff";
-        tab1Title.style.color="#4b91cf";
-        tab2Title.style.color="#4b91cf";
-      }
-    }  
-    */
     handle(e) {
-      var divs=document.querySelectorAll(".content>div");
-      var ids=document.querySelectorAll(".md-tab>div");
-      var targetid=e.target.id.substr(0,4);
-      for(var div of divs){ //内容显示
-        if(div.id==targetid) div.style.display = "block";
+      var divs = document.querySelectorAll(".content>div");
+      var ids = document.querySelectorAll(".md-tab>div");
+      var targetid = e.target.id.substr(0, 4);
+      for (var div of divs) {
+        //内容显示
+        if (div.id == targetid) div.style.display = "block";
         else div.style.display = "none";
       }
-      for(var id of ids){ //导航样式
-        if(id==e.target) {
+      for (var id of ids) {
+        //导航样式
+        if (id == e.target) {
           id.style.borderBottom = "0.25rem solid #ff6375";
           id.style.color = "#ff6375";
-        }
-        else {
+        } else {
           id.style.borderBottom = "0.25rem solid #bde1ff";
           id.style.color = "#4b91cf";
         }
       }
+    },
+    load() { //加载canvas绘图
+      var rander = function(id) {
+        var c = document.getElementById(id);
+        var ctx = c.getContext("2d");
+        var mW = c.width;
+        var mH = c.height;
+        var lineWidth = 10;
+        var r = mW / 2; //中间位置
+        var cR = r - 4 * lineWidth; //圆半径
+        var startAngle = 0.75 * Math.PI; //开始角度--135
+        var endAngle = startAngle + 1.5 * Math.PI; //结束角度
+        var xAngle = 1 * (Math.PI / 180); //偏移角度量
+        var fontSize = 35; //字号大小
+        var tmpAngle = startAngle; //临时角度变量
+        var timer = setInterval(function() {
+          if (tmpAngle >= endAngle) return;
+          else if (tmpAngle + xAngle > endAngle) tmpAngle = endAngle;
+          else tmpAngle += xAngle;
+          ctx.clearRect(0, 0, mW, mH); //清除画布
+          ctx.beginPath();
+          ctx.lineWidth = lineWidth;
+          ctx.strokeStyle = "#ff6375";
+          ctx.arc(r, r, cR, startAngle, tmpAngle);
+          ctx.stroke();
+          ctx.closePath();
+        }, 10);
+      };
+      rander("myCanvas1");
+      rander("myCanvas2");
+      rander("myCanvas3");
     }
   },
   components: { carousel },
   created() {
     this.axios.get("/company/carousel").then(result => {
       this.list = result.data;
-    });
-  }
+    }); 
+  },
+  mounted() {
+    this.load();
+  },
 };
 </script>
 <style scoped>
@@ -206,9 +231,9 @@ export default {
   color: #4b91cf;
   cursor: pointer;
 }
-.md-tab1.active{
-  border-bottom :0.25rem solid #ff6375;
-  color:#ff6375;
+.md-tab1.active {
+  border-bottom: 0.25rem solid #ff6375;
+  color: #ff6375;
 }
 .md-text {
   width: 75rem;
@@ -253,9 +278,38 @@ export default {
   margin-top: 20px;
 }
 .md-main {
-  width: 100%;
+  width: 75rem;
+  display: flex;
+  margin: 0 auto;
+}
+.md-arc {
+  width: 300px;
+  position: relative;
+}
+#myCanvas1,
+#myCanvas2,
+#myCanvas3 {
+  width: 300px;
+  height: 300px;
+}
+.md-arcm {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.md-arcm1 {
+  font-size: 38px;
+  color: #ff6375;
+  margin-bottom: 10px;
   text-align: center;
-  margin-top: 1.25rem;
+  margin-top: 110px;
+}
+.md-arcm2 {
+  font-size: 16px;
+  color: #ff6375;
+  text-align: center;
 }
 .friend {
   width: 100%;
@@ -289,8 +343,8 @@ export default {
   justify-content: space-between;
 }
 /* 合作伙伴上下图片间隔 */
-.firstul{
-  margin-bottom:0.75rem;
+.firstul {
+  margin-bottom: 0.75rem;
 }
 /* ul li 的宽度和布局方式 */
 .friend-ul li {

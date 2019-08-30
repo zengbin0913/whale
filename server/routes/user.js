@@ -5,8 +5,8 @@ var user = express.Router();
 //1用户登录
 user.post("/login",(req,res)=>{
 	var obj=req.body;
-	var sql=`SELECT uid,uname,upwd FROM whale_user WHERE uname=? OR email=?  AND  binary upwd=?`;
-	pool.query(sql,[obj.uname,obj.uname,obj.upwd],(err,result)=>{  //个人表
+	var sql=`SELECT uid,uname,upwd FROM whale_user WHERE (uname=?  AND  binary upwd=?) OR (email=?  AND  binary upwd=?)`;
+	pool.query(sql,[obj.uname,obj.upwd,obj.uname,obj.upwd],(err,result)=>{  //个人表
 		if(err)throw err;
 		if(result.length>0){
 			req.session.uid=result[0].uid;  //session对象中保存数据
@@ -114,7 +114,7 @@ user.post("/companyreg",(req,res)=>{
 			res.send({code:-1,msg:"注册失败"})
 	});
 });
-//4捐赠预约
+//4捐赠预约 和添加商品信息捐赠表  初始化用户订单表 
 user.post("/appoint",(req,res)=>{
 	var uid=req.session.uid;
 	if(!uid){
@@ -133,9 +133,37 @@ user.post("/appoint",(req,res)=>{
 	var obj={uid,donator,province,city,region,address,cellphone,kg,order_time};
 
 	var sql=`INSERT INTO  whale_appointments SET ?`;
-	pool.query(sql,[obj],(err,result)=>{
+	pool.query(sql,[obj],(err,result)=>{ //预约记录增加
 		if(err)throw err;
-		if(result.affectedRows>0) res.send({code:200,msg:"预约成功"});
+		if(result.affectedRows>0) {
+			var sql=`INSERT INTO whale_family SET ?`;
+			var user_id=uid;
+			var obj2={kg,user_id}
+			pool.query(sql,[obj2],(err,result)=>{   //添加商品信息捐赠表
+				if(err)throw err;
+				if(result.affectedRows>0) {
+					var sql=`SELECT fid FROM whale_family WHERE user_id=? AND kg=?`;
+					pool.query(sql,[uid,kg],(err,result)=>{
+						if(err)throw err;
+						if(result.length>0){
+							var fid=result[result.length-1].fid; //取最后添加的
+							var obj={uid,fid};
+							var sql=`INSERT INTO whale_order SET ?`;
+							pool.query(sql,[obj],(err,result)=>{//更新用户订单表
+								if(err) throw err;
+								setTimeout(()=>{
+									orderhandle(uid); //调用订单处理函数--运输中
+									setTimeout(()=>{
+										orderhandle2(uid); //调用订单处理函数--已签收
+									},10000)
+								},10000)
+								res.send({code:200,msg:"预约成功"});
+							})
+						}
+					})
+				}	
+			})
+		}
 		else res.send({code:-1,msg:"预约失败"});
 	})
 });
@@ -283,5 +311,63 @@ user.get("/addlike",(req,res)=>{
 			})		
 		}
 	})
-})
+});
+//17修改用户头像
+user.post("/img",(req,res)=>{
+	var uid=req.session.uid;
+	var img=req.body.p; /*新密码*/
+	var sql=`UPDATE whale_user SET img=? WHERE uid=?`;
+	pool.query(sql,[img,uid],(err,result)=>{
+		if(err) throw err;
+		if(result.affectedRows>0) res.send({code:200,msg:"头像修改成功"});
+		else res.send({code:-1,msg:"头像修改失败"});
+	})
+});
+//18 更新用户订单表--订单处理
+function orderhandle(uid){
+	var status=2;
+	var deliver_time=new Date().getTime();
+	var express="";
+	for(var i=0,arr=[];i<9;i++) arr[i]=Math.floor(Math.random()*10);
+	express=arr.join("");
+	var sql=`SELECT oid FROM whale_order WHERE uid=?`;
+	pool.query(sql,[uid],(err,result)=>{
+		if(err)throw err;
+		var oid=result[result.length-1].oid;
+		var sql=`UPDATE whale_order SET status=?,deliver_time=?,express=? WHERE oid=?`;
+		pool.query(sql,[status,deliver_time,express,oid],(err,result)=>{
+			if(err) throw err;
+		})
+	})
+}
+//19更新用户订单表--订单完成--奖励鲸鱼币
+function orderhandle2(uid){
+	var status=3;
+	var received_time=new Date().getTime();
+	var success_time=received_time+10000;
+
+	var sql=`SELECT oid FROM whale_order WHERE uid=?`;
+	pool.query(sql,[uid],(err,result)=>{  //更新用户订单表--订单完成
+		if(err)throw err;
+		var oid=result[result.length-1].oid;
+
+		var sql=`UPDATE whale_order SET status=?,received_time=?,success_time=? WHERE oid=?`;
+		pool.query(sql,[status,received_time,success_time,oid],(err,result)=>{
+			if(err) throw err;
+		})
+	})
+	var reason="公益捐赠获得";
+	var money=20;
+	var time=success_time;
+	var obj={reason,money,uid,time};
+	var sql1=`INSERT INTO whale_money SET ?`;
+	pool.query(sql1,[obj],(err,result)=>{  //奖励用户鲸鱼币
+		if(err) throw err;
+	})
+	
+	var sql2=`UPDATE whale_user SET money_count=money_count+20 WHERE uid=?`;
+	pool.query(sql2,[uid],(err,result)=>{  //更新用户总鲸鱼币
+		if(err) throw err;
+	})
+}
 module.exports = user;

@@ -14,7 +14,7 @@
             </div>
             <div class="list-li-data">
               <div class="list-li-title">
-                <a href>{{item.title}}</a>
+                <a href="javascript:;">{{item.title}}</a>
               </div>
               <div class="list-li-more">
                 <img
@@ -34,23 +34,19 @@
       <div class="mian-r-num">
         <div class="mian-r-num1">捐赠物资</div>
         <div class="mian-r-num2">
-          <span id="num3">39,145</span>KG
-        </div>
-        <div class="mian-r-num1">捐赠款项</div>
-        <div class="mian-r-num2">
-          <span id="num4">62,794</span>元
+          <span id="num3">{{ Materials}}</span>KG
         </div>
       </div>
       <div class="main-r-help">
         <div class="main-r-help1">帮助申领</div>
-        <a href>
+        <a href="javascript:;">
           <div class="main-r-help2">我要帮助</div>
         </a>
       </div>
       <div class="main-r-gy">
         <div class="main-r-gy1">捡回珍珠计划</div>
         <div class="main-r-gy2">让每一个孩子都可以爱上读书</div>
-        <a href>
+        <a href="javascript:;">
           <div class="main-r-gy3">去支持</div>
         </a>
         <div class="main-r-gy4">执行机构新华爱心基金会</div>
@@ -73,6 +69,10 @@
       </div>
     </div>
   </div>
+  <div class="hide" id="msginfo">
+    <span @click="closeinfo">×</span>
+    <span id="msgcontent"></span>
+  </div>
   <my-footer></my-footer>
 </div>
 </template>
@@ -82,7 +82,8 @@ export default {
     return {
       list:[], 
       likei:"",
-      likeimg:"../assets/img/wuxing.png"
+      likeimg:"../assets/img/wuxing.png",
+      Materials:38800
     }
   },
   methods:{
@@ -103,16 +104,62 @@ export default {
           for(var j=0;j<spans.length;j++)
             if(i==j) spans[j].children[0].src=require("../assets/img/wuxing.png")
         }
-        alert(result.data.msg);
+        msginfo.style.display="block";
+        msgcontent.innerHTML=result.data.msg;
       })
+    },
+    getnum(){
+      var text1=39160;   
+      var timer=setInterval( ()=>{
+        if(this.Materials<text1){
+          this.Materials++;
+        }else{
+          clearInterval(timer)
+        }
+      },1);
+    },
+    closeinfo(){
+      msginfo.style.display="none";
     }
   },
   created() {
     this.load();
+    this.getnum();
   },
 };
 </script>
 <style scoped>
+#msginfo{
+  position:fixed;
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  margin:auto;
+  background-color:rgba(255,0,0,0.3);
+}
+#msginfo span:first-child{
+  position:absolute;
+  width: 2rem;
+  height: 2rem;
+  top:0;
+  left:8rem;
+  color:#333;
+  font-size:2rem;
+  cursor: pointer;
+}
+#msginfo #msgcontent{
+  width: 10rem;
+  height: 8rem;
+  line-height: 6rem;
+  position:absolute;
+  color:#fff;
+  left:0;
+  top:2rem;
+}
 .main {
   display: flex;
   width: 75rem;
