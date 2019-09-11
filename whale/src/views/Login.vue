@@ -15,7 +15,7 @@
         <div class="d1">
           <button @click="login" class="submit">登录</button>
         </div>
-        <div style="margin:0px 10px">
+        <div style="margin:10px 10px">
           <router-link to="/reg">会员注册</router-link>
           <span>|</span>
           <label><input id="remember" type="checkbox" @change="changestatus">记住密码</label>
@@ -96,8 +96,8 @@ export default {
 <style scoped>
 .bg{
   width: 100%;
-  height: 100%;
-  background: url("../assets/img/bjyloginbg.jpg")
+  height: 56.875rem;
+  background: url("../assets/img/bjyloginbg.jpg") no-repeat;
 }
 .bg-color{
   background:transparent !important;
@@ -136,7 +136,7 @@ export default {
   top:0;bottom:0;left:0;right:0;
   margin:auto;
   background: #fff;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   padding-left:0.5rem;
   padding-right:0.5rem;
 }
@@ -161,9 +161,9 @@ export default {
 }
 .d1 input {
   width: 20rem;
-  height: 1.875rem;
+  height: 2.5rem;
   padding-left: 1.5rem;
-  margin-top: 1.125rem;
+  margin-top: 1rem;
   font-size: 0.75rem;
   outline:none;
   border-radius: 0.25rem;
@@ -177,7 +177,10 @@ button.submit {
   color: #fff;
   text-align: center;
   border-radius: 0.25rem;
+  border:2px solid #0569d5;
   outline:none;
+  margin-top:1rem;
+  cursor: pointer;
 }
 a {
   color: #225588;
